@@ -1,0 +1,188 @@
+<!--
+  shared-elements.html
+  =====================================================================
+  This file is NOT a standalone page. It documents the shared HTML
+  blocks (navigation bar and footer) that are copy-pasted into every
+  page file. Any changes to the nav or footer must be replicated
+  across all six pages: index.html, profile.html, experience.html,
+  podcast.html, accolades.html, contact.html.
+
+  NAVIGATION BAR — paste inside <body>, before <main>
+  FOOTER — paste inside <body>, at the end of <main> or after it
+  ===================================================================== -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     NAVIGATION BAR
+     Fixed to the top of every page. Contains:
+       • UJM logo (links back to index.html)
+       • Six page links (set the correct 'active' class per page,
+         or let nav.js handle it automatically via URL matching)
+       • Social/contact icons (email, LinkedIn, podcast, Futbol Mundial)
+       • Mobile hamburger toggle button
+     nav.js adds scroll shadow and controls the mobile menu.
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<header>
+  <nav class="site-nav" aria-label="Main navigation">
+
+    <!-- Logo: clicking always returns to the homepage -->
+    <a href="../index.html" class="nav-logo" aria-label="UJM — Home">UJM</a>
+
+    <!-- Desktop page links -->
+    <div class="nav-links" role="menubar">
+      <a href="../index.html"          role="menuitem">Home</a>
+      <a href="../pages/profile.html"      role="menuitem">Profile &amp; Skills</a>
+      <a href="../pages/experience.html"   role="menuitem">Experience</a>
+      <a href="../pages/podcast.html"      role="menuitem">Podcast</a>
+      <a href="../pages/accolades.html"    role="menuitem">Accolades</a>
+      <a href="../pages/contact.html"      role="menuitem">Contact Me</a>
+    </div>
+
+    <!-- Social / contact icon buttons (top-right of nav) -->
+    <div class="nav-icons" aria-label="Social links">
+
+      <!-- Email icon — opens default mail client -->
+      <a href="mailto:uwejonmunyantwali@yahoo.com"
+         class="nav-icon-btn"
+         title="Email Uwe"
+         aria-label="Send email">
+        ✉
+      </a>
+
+      <!-- LinkedIn profile -->
+      <a href="https://linkedin.com/in/uwejonmunyantwali"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="nav-icon-btn"
+         title="LinkedIn"
+         aria-label="LinkedIn profile">
+        🔗
+      </a>
+
+      <!-- Podcast link — update href once platform URL is confirmed -->
+      <a href="../pages/podcast.html"
+         class="nav-icon-btn"
+         title="Podcast"
+         aria-label="Listen to the podcast">
+        🎙
+      </a>
+
+      <!-- Futbol Mundial external link -->
+      <a href="https://futbolmundial.com"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="nav-icon-btn"
+         title="Futbol Mundial"
+         aria-label="Futbol Mundial website">
+        ⚽
+      </a>
+    </div>
+
+    <!-- Mobile hamburger button — hidden on desktop, shown on mobile -->
+    <!-- nav.js toggles the 'open' class which animates this into an × -->
+    <button class="nav-hamburger"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </nav>
+
+  <!-- Mobile slide-in menu overlay -->
+  <!-- nav.js adds/removes the 'open' class to show/hide this -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+    <a href="../index.html">Home</a>
+    <a href="../pages/profile.html">Profile &amp; Skills</a>
+    <a href="../pages/experience.html">Experience</a>
+    <a href="../pages/podcast.html">Podcast</a>
+    <a href="../pages/accolades.html">Accolades</a>
+    <a href="../pages/contact.html">Contact Me</a>
+  </div>
+
+</header>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     FOOTER
+     Appears at the bottom of every page. Three columns:
+       1. Logo + tagline
+       2. Repeated navigation links
+       3. Social contacts (email, phone, LinkedIn, podcast, FM)
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<footer class="site-footer" aria-label="Site footer">
+  <div class="footer-inner">
+
+    <!-- Column 1: Logo and tagline -->
+    <div>
+      <a href="../index.html" class="footer-logo" aria-label="UJM — Home">UJM</a>
+      <p class="footer-tagline">
+        Football Analyst · Sports Journalist<br>
+        Northwestern University<br>
+        Canada · Uganda · United Kingdom
+      </p>
+    </div>
+
+    <!-- Column 2: Navigation links repeated -->
+    <div>
+      <p class="footer-col-title">Navigate</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="../pages/profile.html">Profile &amp; Skills</a>
+        <a href="../pages/experience.html">Experience</a>
+        <a href="../pages/podcast.html">Podcast</a>
+        <a href="../pages/accolades.html">Accolades &amp; Achievements</a>
+        <a href="../pages/contact.html">Contact Me</a>
+      </nav>
+    </div>
+
+    <!-- Column 3: Social and contact details -->
+    <div>
+      <p class="footer-col-title">Connect</p>
+      <div class="footer-social">
+
+        <div class="footer-social-item">
+          <span class="footer-social-icon">✉</span>
+          <a href="mailto:uwejonmunyantwali@yahoo.com">uwejonmunyantwali@yahoo.com</a>
+        </div>
+
+        <div class="footer-social-item">
+          <span class="footer-social-icon">📞</span>
+          <a href="tel:+12678588531">267-858-8531</a>
+        </div>
+
+        <div class="footer-social-item">
+          <span class="footer-social-icon">🔗</span>
+          <a href="https://linkedin.com/in/uwejonmunyantwali"
+             target="_blank" rel="noopener noreferrer">
+            LinkedIn
+          </a>
+        </div>
+
+        <div class="footer-social-item">
+          <span class="footer-social-icon">🎙</span>
+          <a href="../pages/podcast.html">Podcast — listen now</a>
+        </div>
+
+        <div class="footer-social-item">
+          <span class="footer-social-icon">⚽</span>
+          <a href="https://futbolmundial.com"
+             target="_blank" rel="noopener noreferrer">
+            Futbol Mundial
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom copyright bar -->
+  <div class="footer-bottom">
+    <span>© 2026 Uwe Jon Munyantwali</span>
+  </div>
+
+</footer>

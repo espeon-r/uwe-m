@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!-- pages/profile.html (Profile & Skills)
+Contains:
+    • Hero section with page title and lead text
+    • Two-column layout: bio text (left) + facts card (right)
+    • Skills section with four tagged groups
+    • Pull quote block -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile &amp; Skills: Uwe Jon Munyantwali</title>
+  <meta name="description" content="Football analyst and journalist. Bio, skills, and background.">
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    /* Page hero background: dusty blue */
+    .page-hero { background: var(--clr-sky-bg); }
+
+    /* Large decorative letter behind the hero heading (reference site inspiration) */
+    .hero-bg-letter {
+      position: absolute;
+      right: var(--gutter);
+      bottom: -20px;
+      font-family: var(--font-display);
+      font-size: clamp(200px, 22vw, 320px);
+      font-weight: 900;
+      color: rgba(112, 151, 184, .08);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION (identical on every page) -->
+  <header>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-logo">UJM</a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="profile.html" class="active">Profile &amp; Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="accolades.html">Accolades</a>
+        <a href="contact.html">Contact Me</a>
+      </div>
+      <div class="nav-icons">
+        <a href="mailto:uwejonmunyantwali@yahoo.com" class="nav-icon-btn" title="Email">✉</a>
+        <a href="https://linkedin.com/in/uwejonmunyantwali" target="_blank" rel="noopener" class="nav-icon-btn" title="LinkedIn">🔗</a>
+        <a href="https://open.spotify.com/show/5cVgMxQyh8gZMBLxaZQHXZ" class="nav-icon-btn" title="Podcast">🎙</a>
+        <a href="https://futbolmundial.com" target="_blank" rel="noopener" class="nav-icon-btn" title="Futbol Mundial">⚽</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Home</a>
+      <a href="profile.html">Profile &amp; Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="podcast.html">Podcast</a>
+      <a href="accolades.html">Accolades</a>
+      <a href="contact.html">Contact Me</a>
+    </div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero" aria-label="Page header">
+      <!-- Decorative letter -->
+      <span class="hero-bg-letter" aria-hidden="true">P</span>
+
+      <span class="eyebrow anim-fade-up stagger-1">About</span>
+      <h1 class="text-display anim-fade-up stagger-2">Profile &amp; Skills</h1>
+      <p class="text-lead anim-fade-up stagger-3" style="margin-top: var(--sp-16);">
+        A football analyst and journalist with global reach and an editorial eye.
+      </p>
+    </section>
+
+
+    <!-- BIO + FACTS CARD (two-column layout) -->
+    <section class="section" aria-label="Biography">
+      <div class="container">
+        <div class="grid-2 grid-2--weighted">
+
+          <!-- Left column: bio text (would be preferable for Uwe to do his bio text)-->
+          <div class="reveal">
+            <h2 class="h2" style="margin-bottom: var(--sp-24);">Who I am</h2>
+
+            <p class="text-body" style="margin-bottom: var(--sp-20);">
+              I'm a football analyst and journalist at Futbol Mundial, where I've spent the past
+              four years producing match analysis, tactical breakdowns, and feature content for
+              audiences around the world. I covered the 2023 FIFA Women's World Cup in Australia
+              and New Zealand, and contributed to the 2022 FIFA World Cup coverage from Qatar.
+            </p>
+
+            <p class="text-body" style="margin-bottom: var(--sp-20);">
+              My career has taken me from the press box at FIFA tournaments to a fellowship with
+              the Football Association of Zambia in Lusaka,  and a Digital Sports Operations internship
+              with NBA Africa in Johannesburg. Each role has
+              expanded how I think about communication, storytelling, and the power of connecting
+              with an audience.
+            </p>
+
+            <p class="text-body" style="margin-bottom: var(--sp-20);">
+              I'm currently completing a Master's degree in Sports Administration at Northwestern
+              University, where I'm building the academic framework to complement what I've learned
+              in the field. I hold citizenship in Canada, Uganda, and the United Kingdom, and I'm
+              a U.S. permanent resident — a background that shapes my understanding of global football
+              and its many different cultures.
+            </p>
+
+            <p class="text-body">
+              I believe the best football analysis is the kind that a casual fan can follow and
+              a coach can learn from. That's the standard I hold my work to.
+            </p>
+          </div>
+
+          <!-- Right column: sticky facts card -->
+          <div class="reveal delay-2">
+            <div class="profile-facts">
+              <span class="eyebrow" style="margin-bottom: var(--sp-16);">Quick facts</span>
+
+              <div class="fact-row">
+                <span class="fact-label">Current role</span>
+                <span class="fact-value">Football Analyst &amp; Journalist, Futbol Mundial</span>
+              </div>
+              <div class="fact-row">
+                <span class="fact-label">Education</span>
+                <span class="fact-value">M.A. Sports Administration, Northwestern University (2027)</span>
+              </div>
+              <div class="fact-row">
+                <span class="fact-label">Undergraduate</span>
+                <span class="fact-value">B.S. Psychology, Lynn University (2025) — GPA 3.0</span>
+              </div>
+              <div class="fact-row">
+                <span class="fact-label">Citizenship</span>
+                <span class="fact-value">Canada · Uganda · United Kingdom</span>
+              </div>
+              <div class="fact-row">
+                <span class="fact-label">Residency</span>
+                <span class="fact-value">U.S. Permanent Resident</span>
+              </div>
+              <div class="fact-row">
+                <span class="fact-label">Based in</span>
+                <span class="fact-value">Bear, DE / Evanston, IL</span>
+              </div>
+              <div class="fact-row">
+                <span class="fact-label">Email</span>
+                <span class="fact-value">
+                  <a href="mailto:uwejonmunyantwali@yahoo.com" style="color:var(--clr-sage);">
+                    uwejonmunyantwali@yahoo.com
+                  </a>
+                </span>
+              </div>
+              <div class="fact-row">
+                <span class="fact-label">Phone</span>
+                <span class="fact-value"><a href="tel:+12678588531" style="color:var(--clr-sage);">267-858-8531</a></span>
+              </div>
+
+              <!-- School logos row -->
+              <div style="margin-top: var(--sp-24); padding-top: var(--sp-16); border-top: 1px solid var(--clr-line);">
+                <span class="fact-label" style="margin-bottom: var(--sp-12);">Institutions</span>
+                <div class="flex gap-12 flex-wrap" style="margin-top: var(--sp-8);">
+                <!-- University logos sourced from each institution's official media. -->
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Northwestern_Wildcats_Logo.svg/200px-Northwestern_Wildcats_Logo.svg.png"
+                       alt="Northwestern University"
+                       title="Northwestern University"
+                       style="height:36px; width:auto; object-fit:contain;"
+                       loading="lazy">
+                  <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Lynn_University_seal.svg/200px-Lynn_University_seal.svg.png"
+                       alt="Lynn University"
+                       title="Lynn University"
+                       style="height:36px; width:auto; object-fit:contain;"
+                       loading="lazy">
+                  </div>
+              </div>
+
+            </div><!-- profile-facts -->
+          </div>
+
+        </div><!-- grid-2 -->
+      </div>
+    </section>
+
+
+    <!-- SKILLS SECTION
+         Tag pills grouped by category. Hover interaction defined in components.css. -->
+    <section class="section-sm" style="background: var(--clr-sand-bg);" aria-label="Skills">
+      <div class="container">
+
+        <h2 class="h2 reveal" style="margin-bottom: var(--sp-48);">Skills &amp; Expertise</h2>
+
+        <!-- Analysis skills -->
+        <div class="skills-group reveal">
+          <span class="skills-group-label">Analysis</span>
+          <div class="skills-tags">
+            <span class="skill-tag">Match analysis</span>
+            <span class="skill-tag">Tactical observation</span>
+            <span class="skill-tag">Player performance evaluation</span>
+            <span class="skill-tag">Formation &amp; system breakdowns</span>
+            <span class="skill-tag">Data interpretation</span>
+            <span class="skill-tag">Scouting reports</span>
+          </div>
+        </div>
+
+        <!-- Media & Content skills -->
+        <div class="skills-group reveal delay-1">
+          <span class="skills-group-label">Media &amp; Content</span>
+          <div class="skills-tags">
+            <span class="skill-tag">Football storytelling</span>
+            <span class="skill-tag">Broadcast journalism</span>
+            <span class="skill-tag">Digital content production</span>
+            <span class="skill-tag">Newsletter editing</span>
+            <span class="skill-tag">Podcast hosting</span>
+            <span class="skill-tag">Social media strategy</span>
+            <span class="skill-tag">Press conference coverage</span>
+          </div>
+        </div>
+
+        <!-- Strategy skills -->
+        <div class="skills-group reveal delay-2">
+          <span class="skills-group-label">Strategy &amp; Communications</span>
+          <div class="skills-tags">
+            <span class="skill-tag">Audience engagement</span>
+            <span class="skill-tag">Fan engagement strategy</span>
+            <span class="skill-tag">Digital communications</span>
+            <span class="skill-tag">Sports administration</span>
+            <span class="skill-tag">Campaign communications</span>
+            <span class="skill-tag">Community organising</span>
+          </div>
+        </div>
+
+        <!-- Global football knowledge -->
+        <div class="skills-group reveal delay-3">
+          <span class="skills-group-label">Global Football Knowledge</span>
+          <div class="skills-tags">
+            <span class="skill-tag">African football</span>
+            <span class="skill-tag">European football</span>
+            <span class="skill-tag">North American football</span>
+            <span class="skill-tag">FIFA tournament coverage</span>
+            <span class="skill-tag">Women's football</span>
+            <span class="skill-tag">Cross-continental networks</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- PULL QUOTE
+         A key phrase from Uwe -->
+    <section class="section-sm" aria-label="Quote">
+      <div class="container">
+        <div class="quote-block reveal">
+          <p class="pull-quote">
+            "The best analysis is the kind that a casual fan can follow
+            and a coach can learn from."
+          </p>
+          <p class="quote-attr">— Uwe Jon Munyantwali</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER (identical on every page) -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <a href="../index.html" class="footer-logo">UJM</a>
+        <p class="footer-tagline">Football Analyst · Sports Journalist<br>Northwestern University<br>Canada · Uganda · United Kingdom</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <nav class="footer-nav">
+          <a href="../index.html">Home</a>
+          <a href="profile.html">Profile &amp; Skills</a>
+          <a href="experience.html">Experience</a>
+          <a href="podcast.html">Podcast</a>
+          <a href="accolades.html">Accolades &amp; Achievements</a>
+          <a href="contact.html">Contact Me</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">Connect</p>
+        <div class="footer-social">
+          <div class="footer-social-item"><span class="footer-social-icon">✉</span><a href="mailto:uwejonmunyantwali@yahoo.com">uwejonmunyantwali@yahoo.com</a></div>
+          <div class="footer-social-item"><span class="footer-social-icon">📞</span><a href="tel:+12678588531">267-858-8531</a></div>
+          <div class="footer-social-item"><span class="footer-social-icon">🔗</span><a href="https://linkedin.com/in/uwejonmunyantwali" target="_blank" rel="noopener">LinkedIn</a></div>
+          <div class="footer-social-item"><span class="footer-social-icon">🎙</span><a href="https://open.spotify.com/show/5cVgMxQyh8gZMBLxaZQHXZ">Podcast — listen now</a></div>
+          <div class="footer-social-item"><span class="footer-social-icon">⚽</span><a href="https://futbolmundial.com" target="_blank" rel="noopener">Futbol Mundial</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Uwe Jon Munyantwali</span>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>

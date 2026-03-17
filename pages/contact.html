@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<!--
+  pages/contact.html — Contact Me
+  =====================================================================
+  Contains:
+    • Hero section
+    • Two-column layout: left = intro copy + direct contact details
+      right = contact form card
+    • Social pills row (larger than in nav)
+    • Form validation and submission handled by form.js
+    • Auto-reply enabled via Formspree (see form.js for setup guide)
+  ===================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Uwe Jon Munyantwali</title>
+  <meta name="description" content="Get in touch with Uwe Jon Munyantwali: football analyst and journalist.">
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    .page-hero { background: var(--clr-blush-bg); }
+    .hero-bg-letter {
+      position:absolute; right:var(--gutter); bottom:-20px;
+      font-family:var(--font-display); font-size:clamp(200px,22vw,320px);
+      font-weight:900; color:rgba(192,133,106,.06);
+      line-height:1; pointer-events:none; user-select:none;
+    }
+
+    /* Contact detail item */
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--sp-16);
+      padding: var(--sp-12) 0;
+    }
+
+    /* Icon circle beside each detail */
+    .contact-icon {
+      width: 40px; height: 40px; border-radius: var(--radius-md);
+      flex-shrink: 0;
+      background: var(--clr-blush-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+
+    /* Label above the value */
+    .contact-detail-label {
+      font-family: var(--font-mono);
+      font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--clr-muted); display: block;
+    }
+
+    /* The value (email, phone etc.) */
+    .contact-detail-value {
+      font-size: 14px; color: var(--clr-body); font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* Two-column layout for the main contact section */
+    .contact-body {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: var(--sp-80);
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .contact-body { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="site-nav">
+      <a href="../index.html" class="nav-logo">UJM</a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="profile.html">Profile &amp; Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="accolades.html">Accolades</a>
+        <a href="contact.html" class="active">Contact Me</a>
+      </div>
+      <div class="nav-icons">
+        <a href="mailto:uwejonmunyantwali@yahoo.com" class="nav-icon-btn">✉</a>
+        <a href="https://www.linkedin.com/messaging/thread/2-YTI2YjUxNjktMmZhMy00MDQwLThkMDUtYjMxMDZlZjViMDMzXzEwMA==/" target="_blank" rel="noopener" class="nav-icon-btn">🔗</a>
+        <a href="podcast.html" class="nav-icon-btn">🎙</a>
+        <a href="https://futbolmundial.com" target="_blank" rel="noopener" class="nav-icon-btn">⚽</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Home</a><a href="profile.html">Profile &amp; Skills</a>
+      <a href="experience.html">Experience</a><a href="podcast.html">Podcast</a>
+      <a href="accolades.html">Accolades</a><a href="contact.html">Contact Me</a>
+    </div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- HERO -->
+    <section class="page-hero">
+      <span class="hero-bg-letter" aria-hidden="true">C</span>
+      <span class="eyebrow anim-fade-up stagger-1">Get in touch</span>
+      <h1 class="text-display anim-fade-up stagger-2">Contact Me</h1>
+      <p class="text-lead anim-fade-up stagger-3" style="margin-top:var(--sp-16);">
+        Whether you're an editor, a collaborator, or a fellow football obsessive —
+        I'd love to hear from you.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-body">
+
+          <!-- ── LEFT: Intro + direct contact details ──────── -->
+          <div class="reveal">
+
+            <!-- Warm heading in display font -->
+            <h2 class="h2" style="margin-bottom: var(--sp-20);">Let's talk football.</h2>
+            <p class="text-body" style="margin-bottom: var(--sp-32);">
+              I'm always open to conversations about analysis work, media collaborations,
+              speaking opportunities, or just a good football discussion. Fill in the form
+              or reach out directly — whatever works best for you.
+            </p>
+
+            <!-- Direct contact details -->
+            <div style="margin-bottom: var(--sp-40);">
+
+              <div class="contact-item">
+                <div class="contact-icon" aria-hidden="true">✉</div>
+                <div>
+                  <span class="contact-detail-label">Email</span>
+                  <a href="mailto:uwejonmunyantwali@yahoo.com" class="contact-detail-value">
+                    uwejonmunyantwali@yahoo.com
+                  </a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon" aria-hidden="true">📞</div>
+                <div>
+                  <span class="contact-detail-label">Phone</span>
+                  <a href="tel:+12678588531" class="contact-detail-value">267-858-8531</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon" aria-hidden="true">🔗</div>
+                <div>
+                  <span class="contact-detail-label">LinkedIn</span>
+                  <a href="https://www.linkedin.com/messaging/thread/2-YTI2YjUxNjktMmZhMy00MDQwLThkMDUtYjMxMDZlZjViMDMzXzEwMA==/" target="_blank" rel="noopener" class="contact-detail-value">
+                    linkedin.com/in/uwejonmunyantwali
+                  </a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon" aria-hidden="true">📍</div>
+                <div>
+                  <span class="contact-detail-label">Location</span>
+                  <span class="contact-detail-value">Bear, DE &nbsp;·&nbsp; Evanston, IL</span>
+                </div>
+              </div>
+
+            </div><!-- /contact details -->
+
+            <!-- Social pills — larger row on the contact page -->
+            <span class="eyebrow" style="margin-bottom: var(--sp-16);">Find me on</span>
+            <div class="flex gap-12 flex-wrap">
+              <a href="https://www.linkedin.com/messaging/thread/2-YTI2YjUxNjktMmZhMy00MDQwLThkMDUtYjMxMDZlZjViMDMzXzEwMA==/" target="_blank" rel="noopener" class="social-pill">🔗 LinkedIn</a>
+              <a href="podcast.html" class="social-pill">🎙 Podcast</a>
+              <a href="https://futbolmundial.com" target="_blank" rel="noopener" class="social-pill">⚽ Futbol Mundial</a>
+              <a href="mailto:uwejonmunyantwali@yahoo.com" class="social-pill">✉ Email</a>
+            </div>
+
+          </div><!-- /left column -->
+
+
+          <!-- ── RIGHT: Contact form card ──────────────────── -->
+          <div class="reveal delay-2">
+            <div class="contact-form-card">
+
+              <p class="form-title">Send a message</p>
+
+              <!--
+                The form action attribute is intentionally empty here —
+                form.js intercepts submission via the 'submit' event listener
+                and sends the data to Formspree using fetch().
+                DO NOT add action="..." or method="..." attributes, as they
+                would trigger a page reload instead.
+
+                Formspree will:
+                  1. Forward the message to uwejonmunyantwali@yahoo.com
+                  2. Send an auto-reply to the person who submitted the form
+                     (if Auto-Response is enabled in Formspree settings)
+
+                See form.js for full setup instructions.
+              -->
+              <form id="contactForm" novalidate aria-label="Contact form">
+
+                <!-- Name field -->
+                <div class="form-group">
+                  <label class="form-label" for="fieldName">Your name</label>
+                  <input class="form-input"
+                         type="text"
+                         id="fieldName"
+                         name="name"
+                         placeholder="e.g. Jane Smith"
+                         autocomplete="name"
+                         required>
+                  <!-- Error message shown by form.js if field is empty -->
+                  <span class="form-error-msg" id="fieldNameError" role="alert"></span>
+                </div>
+
+                <!-- Email field -->
+                <div class="form-group">
+                  <label class="form-label" for="fieldEmail">Email address</label>
+                  <input class="form-input"
+                         type="email"
+                         id="fieldEmail"
+                         name="email"
+                         placeholder="jane@example.com"
+                         autocomplete="email"
+                         required>
+                  <span class="form-error-msg" id="fieldEmailError" role="alert"></span>
+                </div>
+
+                <!-- Subject field -->
+                <div class="form-group">
+                  <label class="form-label" for="fieldSubject">Subject</label>
+                  <input class="form-input"
+                         type="text"
+                         id="fieldSubject"
+                         name="subject"
+                         placeholder="e.g. Collaboration opportunity"
+                         required>
+                  <span class="form-error-msg" id="fieldSubjectError" role="alert"></span>
+                </div>
+
+                <!-- Message textarea -->
+                <div class="form-group">
+                  <label class="form-label" for="fieldMessage">Message</label>
+                  <textarea class="form-input"
+                            id="fieldMessage"
+                            name="message"
+                            placeholder="Write your message here…"
+                            rows="5"
+                            required></textarea>
+                  <span class="form-error-msg" id="fieldMessageError" role="alert"></span>
+                </div>
+
+                <!-- Submit button — disabled during submission by form.js -->
+                <button type="submit" id="formSubmit" class="btn btn-terra">
+                  Send message →
+                </button>
+
+              </form>
+
+              <!--
+                Success message: hidden by default, shown by form.js after
+                successful submission. The form itself is hidden at the same time.
+              -->
+              <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+                <strong>Message sent — thank you!</strong><br>
+                Uwe will get back to you as soon as possible. You should also receive
+                a confirmation email at the address you provided.
+              </div>
+
+            </div><!-- /contact-form-card -->
+          </div>
+
+        </div><!-- /contact-body -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div><a href="../index.html" class="footer-logo">UJM</a><p class="footer-tagline">Football Analyst · Sports Journalist<br>Northwestern University</p></div>
+      <div><p class="footer-col-title">Navigate</p><nav class="footer-nav"><a href="../index.html">Home</a><a href="profile.html">Profile &amp; Skills</a><a href="experience.html">Experience</a><a href="podcast.html">Podcast</a><a href="accolades.html">Accolades</a><a href="contact.html">Contact Me</a></nav></div>
+      <div><p class="footer-col-title">Connect</p><div class="footer-social"><div class="footer-social-item"><span class="footer-social-icon">✉</span><a href="mailto:uwejonmunyantwali@yahoo.com">uwejonmunyantwali@yahoo.com</a></div><div class="footer-social-item"><span class="footer-social-icon">📞</span><a href="tel:+12678588531">267-858-8531</a></div><div class="footer-social-item"><span class="footer-social-icon">🔗</span><a href="https://www.linkedin.com/messaging/thread/2-YTI2YjUxNjktMmZhMy00MDQwLThkMDUtYjMxMDZlZjViMDMzXzEwMA==/" target="_blank" rel="noopener">LinkedIn</a></div><div class="footer-social-item"><span class="footer-social-icon">🎙</span><a href="podcast.html">Podcast</a></div><div class="footer-social-item"><span class="footer-social-icon">⚽</span><a href="https://futbolmundial.com" target="_blank" rel="noopener">Futbol Mundial</a></div></div></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Uwe Jon Munyantwali</span>
+    </div>
+  </footer>
+
+  <!--
+    Scripts — loaded at the bottom of body:
+      nav.js    — navigation scroll + mobile menu
+      animations.js — scroll reveal
+      form.js   — contact form validation + Formspree submission + auto-reply
+  -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/form.js"></script>
+
+</body>
+</html>

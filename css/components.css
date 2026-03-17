@@ -1,0 +1,1165 @@
+/* =============================================================
+   components.css
+   Reusable UI components used across multiple pages:
+   navigation bar, footer, buttons, cards, skill tags,
+   timeline, form fields, and social icons.
+
+   Each component is clearly labelled with a comment block.
+   Import after variables.css, typography.css, layout.css.
+   ============================================================= */
+
+
+/* ═══════════════════════════════════════════════════════════
+   NAVIGATION BAR
+   Fixed to the top of the viewport. Always visible on scroll.
+   Contains the UJM logo, page links, and social icon row.
+   ═══════════════════════════════════════════════════════════ */
+
+.site-nav {
+  position: fixed;             /* Stays at top when user scrolls */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;               /* Sits above all page content */
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--gutter);
+  background: rgba(253, 251, 247, 0.92);   /* Warm white at 92% opacity */
+  backdrop-filter: blur(16px);             /* Frosted glass effect */
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--clr-line);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+/* When the page is scrolled, add a subtle shadow under the nav */
+.site-nav.scrolled {
+  box-shadow: var(--shadow-sm);
+}
+
+/* UJM monogram logo — clicking always returns to homepage */
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--clr-sage);
+  letter-spacing: -.01em;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* Container for the six page navigation links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+/* Individual navigation link */
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--clr-muted);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  transition: background var(--transition), color var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Hover and active page state */
+.nav-links a:hover,
+.nav-links a.active {
+  background: var(--clr-sage-bg);
+  color: var(--clr-sage);
+}
+
+/* Active (current page) link gets a slightly bolder weight */
+.nav-links a.active {
+  font-weight: 600;
+}
+
+/* Container for social/contact icon buttons in the top-right of nav */
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+  flex-shrink: 0;
+}
+
+/* Individual social icon button in the nav */
+.nav-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-muted);
+  font-size: 16px;
+  transition: background var(--transition), color var(--transition);
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.nav-icon-btn:hover {
+  background: var(--clr-sage-bg);
+  color: var(--clr-sage);
+}
+
+/* Mobile hamburger toggle — hidden on desktop, visible on mobile */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  border: none;
+  background: none;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--clr-charcoal);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* Hamburger animates into an × when the mobile menu is open */
+.nav-hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile slide-in menu overlay */
+.mobile-menu {
+  display: none;               /* Hidden by default; JS toggles this */
+  position: fixed;
+  top: var(--nav-h);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--clr-warm-white);
+  z-index: 999;
+  padding: var(--sp-48) var(--gutter-sm);
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+/* Individual links inside the mobile slide menu */
+.mobile-menu a {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--clr-charcoal);
+  padding: var(--sp-16) 0;
+  border-bottom: 1px solid var(--clr-line);
+  text-decoration: none;
+}
+
+.mobile-menu a:hover {
+  color: var(--clr-sage);
+}
+
+/* ── Responsive: show hamburger, hide link row on mobile ── */
+@media (max-width: 900px) {
+  .nav-links        { display: none; }    /* Hide horizontal links */
+  .nav-hamburger    { display: flex; }    /* Show burger icon */
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   FOOTER
+   Appears at the bottom of every page with three columns:
+   logo/tagline, navigation links repeated, social contacts.
+   ═══════════════════════════════════════════════════════════ */
+
+.site-footer {
+  background: var(--clr-sand-bg);
+  border-top: 1px solid var(--clr-line);
+  padding: var(--sp-64) var(--gutter) var(--sp-40);
+  margin-top: var(--sp-80);
+}
+
+/* Three-column inner layout */
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: var(--sp-48);
+  padding-bottom: var(--sp-40);
+  border-bottom: 1px solid var(--clr-line);
+}
+
+/* Footer logo */
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--clr-sage);
+  display: block;
+  margin-bottom: var(--sp-8);
+  text-decoration: none;
+}
+
+/* Tagline beneath the logo */
+.footer-tagline {
+  font-size: 13px;
+  color: var(--clr-muted);
+  line-height: 1.6;
+}
+
+/* Column heading in footer */
+.footer-col-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  margin-bottom: var(--sp-16);
+}
+
+/* Navigation links stacked vertically in footer */
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+}
+
+.footer-nav a {
+  font-size: 13px;
+  color: var(--clr-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer-nav a:hover {
+  color: var(--clr-sage);
+}
+
+/* Each social contact row in footer */
+.footer-social-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-10);
+  font-size: 13px;
+  color: var(--clr-muted);
+  padding: var(--sp-4) 0;
+}
+
+/* Icon emoji/character in social row */
+.footer-social-icon {
+  font-size: 15px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Bottom copyright / credit bar */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--sp-24);
+}
+
+.footer-bottom span {
+  font-size: 12px;
+  color: var(--clr-light);
+  font-family: var(--font-mono);
+}
+
+/* Responsive footer — stack columns on tablet */
+@media (max-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--sp-8);
+    text-align: center;
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BUTTONS
+   Two variants: solid (primary action) and outlined (secondary).
+   Both use the pill shape from the reference site aesthetic.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Base button styles shared by all variants */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-8);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: 13px 28px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition),
+              transform var(--transition), box-shadow var(--transition);
+}
+
+/* Solid sage green primary button */
+.btn-primary {
+  background: var(--clr-sage);
+  color: var(--clr-white);
+}
+
+.btn-primary:hover {
+  background: var(--clr-sage-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(125, 169, 138, .32);
+  color: var(--clr-white);
+}
+
+/* Outlined secondary button */
+.btn-outline {
+  background: transparent;
+  color: var(--clr-sage);
+  border: 1.5px solid var(--clr-sage);
+}
+
+.btn-outline:hover {
+  background: var(--clr-sage-bg);
+  transform: translateY(-1px);
+  color: var(--clr-sage);
+}
+
+/* Terracotta CTA button — used on Contact page form */
+.btn-terra {
+  background: var(--clr-terra);
+  color: var(--clr-white);
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-terra:hover {
+  background: var(--clr-terra-dark);
+  transform: translateY(-1px);
+  color: var(--clr-white);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   IMAGE TILES (Homepage)
+   Clickable full-bleed photo tiles that navigate to each page.
+   Inspired by the Luke Herndon reference site: large images,
+   hover-reveal text, minimal decoration.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Tile container — acts as the link wrapper */
+.tile {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  background: var(--clr-sand-bg);   /* Fallback if image fails to load */
+}
+
+/* The actual image inside the tile */
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              /* Fill tile without distortion */
+  display: block;
+  transition: transform 600ms var(--ease), filter 600ms var(--ease);
+  filter: brightness(.92) saturate(.85);  /* Slightly desaturated default */
+}
+
+/* On hover: zoom in, restore saturation */
+.tile:hover img {
+  transform: scale(1.04);
+  filter: brightness(.8) saturate(1.1);
+}
+
+/* Dark gradient overlay for text legibility */
+.tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 40%,
+    rgba(26, 23, 20, .72) 100%
+  );
+  transition: opacity var(--transition);
+}
+
+/* Text block anchored to the bottom of each tile */
+.tile-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--sp-24) var(--sp-24) var(--sp-20);
+  color: var(--clr-white);
+}
+
+/* Page name inside tile */
+.tile-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Short description inside tile — slides up on hover */
+.tile-desc {
+  font-size: 12px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--transition), transform var(--transition);
+  display: block;
+  color: rgba(255,255,255,.8);
+}
+
+.tile:hover .tile-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Arrow icon in top-right of each tile */
+.tile-arrow {
+  position: absolute;
+  top: var(--sp-16);
+  right: var(--sp-16);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-white);
+  font-size: 14px;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.tile:hover .tile-arrow {
+  background: var(--clr-sage);
+  transform: translate(2px, -2px);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SKILL TAGS
+   Pill-shaped tags used on the Profile & Skills page.
+   Each group has its own colour category label above it.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Wrapper for a group of skill tags with a category label */
+.skills-group {
+  margin-bottom: var(--sp-40);
+}
+
+/* Category label above the tag row */
+.skills-group-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--clr-terra);
+  margin-bottom: var(--sp-12);
+  display: block;
+}
+
+/* Row of skill tag pills */
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-8);
+}
+
+/* Individual skill pill */
+.skill-tag {
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  border: 1px solid var(--clr-line);
+  background: var(--clr-warm-white);
+  color: var(--clr-body);
+  transition: border-color var(--transition), background var(--transition), color var(--transition);
+  cursor: default;
+}
+
+.skill-tag:hover {
+  border-color: var(--clr-sage);
+  background: var(--clr-sage-bg);
+  color: var(--clr-sage);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   TIMELINE (Experience page)
+   Vertical left-border timeline with role cards.
+   Each role has a coloured dot, org label, title, dates,
+   bullet list, and optional article link.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Outer timeline wrapper — sets the left border line */
+.timeline {
+  position: relative;
+  padding-left: 36px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 0;
+  width: 2px;
+  background: var(--clr-line);
+}
+
+/* Individual timeline entry */
+.timeline-item {
+  position: relative;
+  padding-bottom: var(--sp-64);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Coloured dot on the timeline line */
+.timeline-dot {
+  position: absolute;
+  left: -42px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--clr-sage);
+  border: 3px solid var(--clr-warm-white);
+  box-shadow: 0 0 0 2px var(--clr-sage);
+}
+
+/* Organisation name above the role title */
+.tl-org {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--clr-terra);
+  margin-bottom: var(--sp-4);
+  display: block;
+}
+
+/* Role/job title */
+.tl-role {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--clr-charcoal);
+  margin-bottom: var(--sp-4);
+}
+
+/* Date and location metadata */
+.tl-meta {
+  font-size: 13px;
+  color: var(--clr-muted);
+  margin-bottom: var(--sp-16);
+}
+
+/* List of bullet points for a role */
+.tl-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Individual bullet */
+.tl-bullets li {
+  font-size: 14px;
+  color: var(--clr-body);
+  line-height: 1.7;
+  display: flex;
+  gap: var(--sp-10);
+}
+
+/* Arrow bullet marker */
+.tl-bullets li::before {
+  content: '→';
+  color: var(--clr-sage);
+  flex-shrink: 0;
+}
+
+/* "Read article" link below a role */
+.tl-article-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--sp-12);
+  font-size: 13px;
+  color: var(--clr-blue);
+  font-weight: 500;
+  transition: color var(--transition), gap var(--transition);
+  text-decoration: none;
+}
+
+.tl-article-link:hover {
+  color: var(--clr-sage);
+  gap: 10px;
+}
+
+/* Article link soccer ball icon */
+.tl-article-link .ball {
+  font-size: 16px;
+  transition: transform var(--transition);
+}
+
+.tl-article-link:hover .ball {
+  transform: rotate(20deg);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   ACCOLADE CARDS
+   Used on the Accolades & Achievements page.
+   Each card is bordered at the top with an accent colour
+   specific to the category (academic, tournament, leadership).
+   ═══════════════════════════════════════════════════════════ */
+
+/* Card wrapper */
+.accolade-card {
+  padding: var(--sp-28, 28px);   /* Fallback to 28px if var missing */
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--clr-line);
+  background: var(--clr-warm-white);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.accolade-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Icon (emoji or image) at top of card */
+.acc-icon {
+  font-size: 32px;
+  margin-bottom: var(--sp-16);
+  display: block;
+}
+
+/* Achievement/award title */
+.acc-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--clr-charcoal);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+/* Organisation or event name */
+.acc-org {
+  font-size: 13px;
+  color: var(--clr-terra);
+  font-weight: 500;
+}
+
+/* Year / date in mono */
+.acc-year {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--clr-muted);
+  margin-top: 6px;
+  display: block;
+}
+
+/* Supporting description text */
+.acc-desc {
+  font-size: 13px;
+  color: var(--clr-muted);
+  line-height: 1.6;
+  margin-top: var(--sp-12);
+}
+
+/* Logo image inside an accolade card */
+.acc-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: var(--sp-16);
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+/* Top colour accent bar (set inline with border-top: 3px solid ...) */
+
+
+/* ═══════════════════════════════════════════════════════════
+   PROFILE FACTS CARD (Profile & Skills page)
+   Sidebar card showing key biographical facts in rows.
+   ═══════════════════════════════════════════════════════════ */
+
+.profile-facts {
+  background: var(--clr-sand-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-32);
+  border: 1px solid var(--clr-line);
+  position: sticky;
+  top: calc(var(--nav-h) + 24px);   /* Sticks below nav when scrolling */
+}
+
+/* Each row inside the facts card */
+.fact-row {
+  display: flex;
+  flex-direction: column;
+  padding: var(--sp-10) 0;
+  border-bottom: 1px solid var(--clr-line);
+}
+
+.fact-row:last-child {
+  border-bottom: none;
+}
+
+/* Label above the value */
+.fact-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+}
+
+/* The value itself */
+.fact-value {
+  font-size: 14px;
+  color: var(--clr-charcoal);
+  font-weight: 500;
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   PULL QUOTE BLOCK
+   Full-width callout with a left border accent.
+   Used on Profile, Accolades, and anywhere a key phrase
+   deserves emphasis.
+   ═══════════════════════════════════════════════════════════ */
+
+.quote-block {
+  padding: var(--sp-32) var(--sp-40);
+  background: var(--clr-sage-bg);
+  border-left: 5px solid var(--clr-sage);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.quote-block .pull-quote {
+  color: var(--clr-charcoal);
+  line-height: 1.6;
+}
+
+.quote-block .quote-attr {
+  font-size: 13px;
+  color: var(--clr-muted);
+  margin-top: var(--sp-12);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   PLATFORM BADGES (Podcast page)
+   Coloured pill badges linking to podcast platforms.
+   ═══════════════════════════════════════════════════════════ */
+
+.platform-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.platform-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.platform-spotify { background: #1DB954; color: #fff; }
+.platform-apple   { background: var(--clr-charcoal); color: #fff; }
+.platform-youtube { background: #FF0000; color: #fff; }
+
+/* Instagram badge — uses the official brand gradient.
+   White text and icon sit on top of the warm pink-to-purple gradient. */
+.platform-instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #fff;
+  /* Ensure the long handle text stays on one line at desktop widths,
+     wraps gracefully on mobile */
+  white-space: nowrap;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   EPISODE CARDS (Podcast page)
+   Simple rows for each podcast episode with listen link.
+   ═══════════════════════════════════════════════════════════ */
+
+.episode-card {
+  display: flex;
+  gap: var(--sp-20);
+  align-items: flex-start;
+  padding: var(--sp-24) 0;
+  border-bottom: 1px solid var(--clr-line);
+  transition: background var(--transition);
+}
+
+.episode-card:hover {
+  /* Subtle background on hover to indicate interactivity */
+}
+
+/* Episode number in mono */
+.ep-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--clr-muted);
+  min-width: 40px;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+/* Episode title */
+.ep-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--clr-charcoal);
+  margin-bottom: 4px;
+  font-family: var(--font-display);
+}
+
+/* Short episode description */
+.ep-desc {
+  font-size: 13px;
+  color: var(--clr-muted);
+  line-height: 1.6;
+}
+
+/* "Listen now" link at base of episode */
+.ep-listen {
+  margin-top: var(--sp-8);
+  font-size: 12px;
+  color: var(--clr-mauve);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color var(--transition), gap var(--transition);
+}
+
+.ep-listen:hover {
+  color: var(--clr-sage);
+  gap: 8px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   CONTACT FORM (Contact page)
+   Card-style form with labelled inputs and a submit button.
+   Auto-reply is handled in form.js via Formspree.
+   ═══════════════════════════════════════════════════════════ */
+
+/* Form card wrapper */
+.contact-form-card {
+  background: var(--clr-sand-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-40);
+  border: 1px solid var(--clr-line);
+}
+
+/* Form section title */
+.form-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--clr-charcoal);
+  margin-bottom: var(--sp-28, 28px);
+}
+
+/* Wrapper for each label + input pair */
+.form-group {
+  margin-bottom: var(--sp-20);
+}
+
+/* Input field label */
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--clr-muted);
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Text inputs and textarea */
+.form-input {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--clr-line);
+  background: var(--clr-warm-white);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--clr-body);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+/* Focus ring on inputs — accessibility */
+.form-input:focus {
+  border-color: var(--clr-sage);
+  box-shadow: 0 0 0 3px rgba(125, 169, 138, .15);
+}
+
+/* Textarea-specific styles */
+textarea.form-input {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.6;
+}
+
+/* Error state (added by JS on validation failure) */
+.form-input.error {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, .12);
+}
+
+/* Inline validation error message.
+   !important is intentional here — browsers apply a UA stylesheet
+   rule of display:inline to elements with role="alert", which would
+   show empty error spans even before any error occurs. !important
+   ensures they start hidden and only appear when JS adds .visible. */
+.form-error-msg {
+  font-size: 12px;
+  color: #c0392b;
+  margin-top: 4px;
+  display: none !important;
+  min-height: 0;
+}
+
+/* When JS adds .visible, override the !important above */
+.form-error-msg.visible {
+  display: block !important;
+}
+
+/* Success confirmation message shown after form submission */
+.form-success {
+  display: none;
+  padding: var(--sp-24);
+  background: var(--clr-sage-bg);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--clr-sage);
+  font-size: 15px;
+  color: var(--clr-charcoal);
+  line-height: 1.6;
+}
+
+.form-success.visible {
+  display: block;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SOCIAL PILLS (Contact page — large row)
+   Larger social link pills shown on the Contact page.
+   ═══════════════════════════════════════════════════════════ */
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-8);
+  padding: 11px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--clr-warm-white);
+  border: 1px solid var(--clr-line);
+  font-size: 13px;
+  color: var(--clr-body);
+  text-decoration: none;
+  transition: border-color var(--transition), color var(--transition),
+              background var(--transition), transform var(--transition);
+}
+
+.social-pill:hover {
+  border-color: var(--clr-sage);
+  color: var(--clr-sage);
+  background: var(--clr-sage-bg);
+  transform: translateY(-2px);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   FEATURED ARTICLES ROW (Experience page)
+   Interactive article chips — clicking opens the article.
+   The soccer ball icon animates on hover.
+   ═══════════════════════════════════════════════════════════ */
+
+.article-row {
+  display: flex;
+  gap: var(--sp-12);
+  flex-wrap: wrap;
+}
+
+/* Individual article chip link */
+.article-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--clr-warm-white);
+  border: 1px solid var(--clr-line);
+  font-size: 13px;
+  color: var(--clr-blue);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition),
+              transform var(--transition);
+}
+
+.article-chip:hover {
+  background: var(--clr-sky-bg);
+  border-color: var(--clr-blue);
+  transform: translateY(-2px);
+}
+
+/* Soccer ball icon — rotates on hover for delight */
+.article-chip .ball-icon {
+  font-size: 16px;
+  display: inline-block;
+  transition: transform 400ms var(--ease);
+}
+
+.article-chip:hover .ball-icon {
+  transform: rotate(30deg);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   CALLOUT / HIGHLIGHT BOX
+   Accent-bordered box used to highlight important notices
+   (e.g. placeholder content warnings, key facts).
+   ═══════════════════════════════════════════════════════════ */
+
+.callout {
+  padding: var(--sp-24) var(--sp-32);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  border-left: 4px solid var(--clr-sage);
+  background: var(--clr-sage-bg);
+  font-size: 14px;
+  color: var(--clr-body);
+  line-height: 1.7;
+}
+
+.callout--terra {
+  border-left-color: var(--clr-terra);
+  background: var(--clr-wheat-bg);
+}
+
+.callout--blue {
+  border-left-color: var(--clr-blue);
+  background: var(--clr-sky-bg);
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   STAT STRIP (Homepage hero)
+   Row of key numbers displayed below the hero copy.
+   ═══════════════════════════════════════════════════════════ */
+
+.stats-strip {
+  display: flex;
+  gap: var(--sp-48);
+  flex-wrap: wrap;
+  padding-top: var(--sp-40);
+  border-top: 1px solid rgba(216, 208, 198, .6);
+}
+
+/* Individual stat */
+.stat-item {}
+
+/* Large number */
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--clr-charcoal);
+  line-height: 1;
+}
+
+/* Label below the number */
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--clr-muted);
+  margin-top: 6px;
+  text-transform: uppercase;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   SCROLL REVEAL
+   Elements with .reveal are invisible by default and animate
+   into view when observed by the IntersectionObserver in
+   animations.js. Class .visible triggers the transition.
+   ═══════════════════════════════════════════════════════════ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms var(--ease), transform 600ms var(--ease);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delay variants — add delay-1 through delay-5 to children */
+.reveal.delay-1 { transition-delay: 80ms; }
+.reveal.delay-2 { transition-delay: 160ms; }
+.reveal.delay-3 { transition-delay: 240ms; }
+.reveal.delay-4 { transition-delay: 320ms; }
+.reveal.delay-5 { transition-delay: 400ms; }

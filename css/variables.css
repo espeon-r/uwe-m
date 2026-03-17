@@ -1,0 +1,109 @@
+/* =============================================================
+   variables.css
+   Central design token file. Every colour, spacing unit,
+   font size, and breakpoint used across the site is defined
+   here as a CSS custom property. Change a value here and it
+   updates everywhere automatically.
+   ============================================================= */
+
+:root {
+
+  /* ── Pastel colour palette ─────────────────────────────────
+     Muted, warm tones inspired by a well-read editorial magazine.
+     No fully saturated colours — every hue is softened.
+  ────────────────────────────────────────────────────────── */
+
+  /* Page backgrounds */
+  --clr-warm-white:   #FDFBF7;   /* Default page background */
+  --clr-sage-bg:      #E8F0EB;   /* Sage tinted panels */
+  --clr-sky-bg:       #E6EFF7;   /* Dusty-blue tinted panels */
+  --clr-sand-bg:      #F5EFE6;   /* Warm sand card surfaces */
+  --clr-blush-bg:     #F5E9E9;   /* Soft blush — contact / accolades */
+  --clr-lavender-bg:  #EDE9F5;   /* Muted lavender — podcast */
+  --clr-wheat-bg:     #F5EDE0;   /* Warm wheat — experience */
+
+  /* Accent colours */
+  --clr-sage:         #7DA98A;   /* Primary accent: links, CTA buttons, active states */
+  --clr-sage-dark:    #5E8A6E;   /* Darker sage for hover states */
+  --clr-blue:         #7097B8;   /* Secondary accent: hover states, icons */
+  --clr-terra:        #C0856A;   /* Terracotta: warm labels, callouts */
+  --clr-terra-dark:   #A06A52;   /* Darker terracotta for hover */
+  --clr-mauve:        #9E7D9A;   /* Soft mauve: podcast section */
+
+  /* Text colours */
+  --clr-charcoal:     #3D3A35;   /* Headings */
+  --clr-body:         #4A4540;   /* Body copy */
+  --clr-muted:        #7A7470;   /* Secondary / caption text */
+  --clr-light:        #A09890;   /* Placeholder / very light text */
+  --clr-line:         #D8D0C6;   /* Dividers and borders */
+
+  /* Utility */
+  --clr-white:        #FFFFFF;
+  --clr-black:        #1A1714;
+
+  /* ── Typography scale ──────────────────────────────────────
+     Fluid sizes via clamp() so headings scale between mobile
+     and desktop without media queries.
+  ────────────────────────────────────────────────────────── */
+  --text-xs:    11px;
+  --text-sm:    13px;
+  --text-base:  15px;
+  --text-md:    18px;
+  --text-lg:    clamp(20px, 2vw, 24px);
+  --text-xl:    clamp(24px, 3vw, 32px);
+  --text-2xl:   clamp(32px, 4vw, 48px);
+  --text-3xl:   clamp(48px, 6vw, 80px);
+  --text-hero:  clamp(56px, 9vw, 120px);
+
+  /* ── Spacing scale ─────────────────────────────────────────
+     Used for padding, margin, and gap — keeps vertical rhythm
+     consistent across all pages.
+  ────────────────────────────────────────────────────────── */
+  --sp-2:    2px;
+  --sp-4:    4px;
+  --sp-8:    8px;
+  --sp-12:  12px;
+  --sp-16:  16px;
+  --sp-20:  20px;
+  --sp-24:  24px;
+  --sp-32:  32px;
+  --sp-40:  40px;
+  --sp-48:  48px;
+  --sp-64:  64px;
+  --sp-80:  80px;
+  --sp-96:  96px;
+  --sp-120:120px;
+
+  /* ── Border radius ─────────────────────────────────────────*/
+  --radius-sm:   6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-pill:100px;
+
+  /* ── Shadows ───────────────────────────────────────────────*/
+  --shadow-sm:  0 2px 8px  rgba(61,58,53,.06);
+  --shadow-md:  0 8px 24px rgba(61,58,53,.08);
+  --shadow-lg:  0 20px 56px rgba(61,58,53,.12);
+
+  /* ── Transitions ───────────────────────────────────────────*/
+  --ease:       cubic-bezier(.25,.46,.45,.94);
+  --transition: 280ms var(--ease);
+
+  /* ── Layout ────────────────────────────────────────────────*/
+  --nav-h:    72px;    /* Height of the sticky navigation bar */
+  --max-w:  1280px;    /* Maximum content width */
+  --gutter:   72px;    /* Horizontal page padding on desktop */
+  --gutter-sm:24px;    /* Horizontal page padding on mobile */
+}
+
+/* ── Responsive breakpoints ─────────────────────────────────
+   Used in media queries across all CSS files. Reference:
+     --bp-sm  = 480px  (large phones)
+     --bp-md  = 768px  (tablets)
+     --bp-lg  = 1024px (small laptops)
+     --bp-xl  = 1280px (desktops)
+────────────────────────────────────────────────────────── */
+/* Note: CSS custom properties can't be used in @media queries
+   directly — breakpoint pixel values are repeated in each file
+   where media queries are needed. The values are documented
+   here for reference. */

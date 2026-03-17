@@ -1,0 +1,216 @@
+/* =============================================================
+   layout.css
+   Grid systems, page structure helpers, container widths,
+   and flexbox utilities. Import after variables.css.
+
+   This file controls HOW things are arranged on the page,
+   not how they look. Colours, fonts, and component styles
+   live in their own files.
+   ============================================================= */
+
+/* ── Page wrapper ────────────────────────────────────────────
+   Every page's <main> should use .page-wrapper to ensure
+   consistent top padding that clears the fixed nav bar.
+────────────────────────────────────────────────────────── */
+.page-wrapper {
+  padding-top: var(--nav-h);   /* Offset content below the fixed nav */
+  min-height: 100vh;           /* Ensure the page always fills the viewport */
+}
+
+/* ── Content container ───────────────────────────────────────
+   Centres content and applies consistent horizontal padding.
+   Nest inside full-bleed sections to constrain text width.
+────────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* ── Full-bleed section ──────────────────────────────────────
+   Allows a section to span 100% page width while the
+   content inside uses .container to stay constrained.
+────────────────────────────────────────────────────────── */
+.full-bleed {
+  width: 100%;
+}
+
+/* ── Section vertical rhythm ─────────────────────────────────
+   Standard top/bottom padding for page sections. Keeps
+   consistent breathing room between content blocks.
+────────────────────────────────────────────────────────── */
+.section {
+  padding-top: var(--sp-96);
+  padding-bottom: var(--sp-96);
+}
+
+.section-sm {
+  padding-top: var(--sp-64);
+  padding-bottom: var(--sp-64);
+}
+
+.section-lg {
+  padding-top: var(--sp-120);
+  padding-bottom: var(--sp-120);
+}
+
+/* ── Page hero ───────────────────────────────────────────────
+   Full-viewport hero section used at the top of each page.
+   Vertically centres content and provides a minimum height.
+────────────────────────────────────────────────────────── */
+.page-hero {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;   /* Anchor text to bottom of hero */
+  padding: var(--sp-120) var(--gutter) var(--sp-80);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Home hero is taller — it's the first impression */
+.home-hero {
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--sp-120) var(--gutter) var(--sp-96);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Two-column grid ─────────────────────────────────────────
+   A 50/50 responsive two-column layout used on Profile,
+   Contact, and other pages with a main + sidebar structure.
+────────────────────────────────────────────────────────── */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-64);
+  align-items: start;
+}
+
+/* Weighted 60/40 split — main content + narrower sidebar */
+.grid-2--weighted {
+  grid-template-columns: 3fr 2fr;
+}
+
+/* ── Three-column grid ───────────────────────────────────────
+   Used for accolades cards and footer columns.
+────────────────────────────────────────────────────────── */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-24);
+}
+
+/* ── Tile grid ───────────────────────────────────────────────
+   Home page photo tile grid. Uses named grid areas for the
+   asymmetric hero layout (inspired by reference site).
+────────────────────────────────────────────────────────── */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 360px 280px;
+  gap: var(--sp-4);
+}
+
+/* Individual tile spanning rules — set on the HTML elements */
+.tile--wide  { grid-column: span 4; }   /* Wide tile (4/6 columns) */
+.tile--half  { grid-column: span 3; }   /* Half width (3/6 columns) */
+.tile--third { grid-column: span 2; }   /* Third width (2/6 columns) */
+.tile--tall  { grid-row: span 2; }      /* Spans both grid rows */
+
+/* ── Flex utilities ──────────────────────────────────────────
+   Common flexbox patterns used throughout the site.
+────────────────────────────────────────────────────────── */
+.flex         { display: flex; }
+.flex-col     { display: flex; flex-direction: column; }
+.flex-center  { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.flex-wrap    { flex-wrap: wrap; }
+.items-start  { align-items: flex-start; }
+.items-end    { align-items: flex-end; }
+.gap-8        { gap: var(--sp-8); }
+.gap-12       { gap: var(--sp-12); }
+.gap-16       { gap: var(--sp-16); }
+.gap-24       { gap: var(--sp-24); }
+.gap-32       { gap: var(--sp-32); }
+.gap-48       { gap: var(--sp-48); }
+
+/* ── Spacing utilities ───────────────────────────────────────
+   Quick margin/padding helpers for fine-tuning spacing
+   without writing new CSS rules.
+────────────────────────────────────────────────────────── */
+.mt-8  { margin-top: var(--sp-8);  }
+.mt-16 { margin-top: var(--sp-16); }
+.mt-24 { margin-top: var(--sp-24); }
+.mt-32 { margin-top: var(--sp-32); }
+.mt-48 { margin-top: var(--sp-48); }
+.mt-64 { margin-top: var(--sp-64); }
+.mb-8  { margin-bottom: var(--sp-8);  }
+.mb-16 { margin-bottom: var(--sp-16); }
+.mb-24 { margin-bottom: var(--sp-24); }
+.mb-32 { margin-bottom: var(--sp-32); }
+.mb-48 { margin-bottom: var(--sp-48); }
+
+/* ── Responsive overrides ────────────────────────────────────
+   At tablet (768px) and mobile (480px), switch multi-column
+   layouts to single-column stacks.
+────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --gutter: 40px;   /* Reduce side padding on smaller screens */
+  }
+
+  .grid-2,
+  .grid-2--weighted {
+    grid-template-columns: 1fr;  /* Stack columns vertically */
+    gap: var(--sp-48);
+  }
+
+  .tile-grid {
+    grid-template-columns: repeat(2, 1fr);   /* 2 columns on tablet */
+    grid-template-rows: auto;
+  }
+
+  .tile--wide,
+  .tile--half,
+  .tile--third { grid-column: span 1; }    /* Reset column spans */
+  .tile--tall  { grid-row: span 1; }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --gutter: var(--gutter-sm);   /* Tightest padding on mobile */
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr 1fr;   /* 2 cols on tablet */
+  }
+
+  .section,
+  .section-sm,
+  .section-lg {
+    padding-top: var(--sp-64);     /* Reduce vertical rhythm on mobile */
+    padding-bottom: var(--sp-64);
+  }
+
+  .page-hero {
+    min-height: 50vh;
+    padding: var(--sp-96) var(--sp-24) var(--sp-64);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-3 {
+    grid-template-columns: 1fr;    /* Full single column on small phones */
+  }
+
+  .tile-grid {
+    grid-template-columns: 1fr;   /* One tile per row */
+  }
+}

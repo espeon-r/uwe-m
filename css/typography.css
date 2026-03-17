@@ -1,0 +1,202 @@
+/* =============================================================
+   typography.css
+   All font imports, base text styles, and typographic
+   utility classes. Import this after variables.css.
+
+   Fonts used:
+     Playfair Display — serif display face for large headings.
+       Warm, editorial, and distinctive. Loaded from Google Fonts.
+     DM Sans — clean, modern sans-serif for body and UI text.
+       Highly legible at small sizes. Loaded from Google Fonts.
+     DM Mono — monospaced face for labels, metadata, and stats.
+       Adds a data/journalism feel to supporting text.
+   ============================================================= */
+
+/* ── Google Fonts import ─────────────────────────────────────
+   Preconnect hints are set in each HTML <head> for performance.
+   This @import loads all three typefaces in the weights needed.
+────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+/* ── Font family variables ───────────────────────────────────
+   Defined here as custom properties so they're easy to swap.
+────────────────────────────────────────────────────────── */
+:root {
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'DM Mono', 'Courier New', monospace;
+}
+
+/* ── Base document typography ────────────────────────────────
+   Sets sensible defaults for the whole site. Everything else
+   builds on top of this.
+────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;   /* Include padding/border in width calculations */
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;           /* Base rem unit */
+  scroll-behavior: smooth;   /* Smooth in-page anchor scrolling */
+  -webkit-font-smoothing: antialiased;  /* Sharper text on macOS/iOS */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--clr-body);
+  background-color: var(--clr-warm-white);
+}
+
+/* ── Heading styles ──────────────────────────────────────────
+   All headings use Playfair Display. The .display class is for
+   the largest hero-level headings on each page.
+────────────────────────────────────────────────────────── */
+
+/* Hero-scale display heading — used once per page */
+.text-display {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 900;
+  line-height: .95;
+  letter-spacing: -.03em;
+  color: var(--clr-charcoal);
+}
+
+/* Large section heading */
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  color: var(--clr-charcoal);
+}
+
+/* Section-level headings */
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -.015em;
+  color: var(--clr-charcoal);
+}
+
+/* Sub-section headings */
+h3, .h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--clr-charcoal);
+}
+
+/* Card / component headings */
+h4, .h4 {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--clr-charcoal);
+}
+
+/* ── Body text utilities ─────────────────────────────────────*/
+
+/* Lead paragraph — used directly under page headings */
+.text-lead {
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1.8;
+  color: var(--clr-muted);
+  max-width: 600px;
+}
+
+/* Standard body paragraph */
+.text-body {
+  font-size: var(--text-base);
+  line-height: 1.85;
+  color: var(--clr-body);
+}
+
+/* Muted / supporting text */
+.text-muted {
+  color: var(--clr-muted);
+}
+
+/* Small metadata text */
+.text-sm {
+  font-size: var(--text-sm);
+  color: var(--clr-muted);
+}
+
+/* ── Eyebrow / label text ────────────────────────────────────
+   Used above headings to indicate the section type.
+   E.g. "ABOUT" or "CAREER" above a main heading.
+────────────────────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--clr-terra);
+  display: block;
+  margin-bottom: var(--sp-12);
+}
+
+/* ── Pull quote ──────────────────────────────────────────────
+   Large italic quote for highlighting a key phrase.
+────────────────────────────────────────────────────────── */
+.pull-quote {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--clr-charcoal);
+}
+
+/* ── Monospaced utility ──────────────────────────────────────
+   For dates, stats, metadata, skill tags, and code-like labels.
+────────────────────────────────────────────────────────── */
+.text-mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: .06em;
+  color: var(--clr-muted);
+}
+
+/* ── Link defaults ───────────────────────────────────────────
+   Base anchor style. Specific link components are in
+   components.css. This just removes the default blue underline.
+────────────────────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--clr-sage);
+}
+
+/* ── Horizontal rule ─────────────────────────────────────────
+   A simple divider used between content sections.
+────────────────────────────────────────────────────────── */
+.rule {
+  border: none;
+  border-top: 1px solid var(--clr-line);
+  margin: var(--sp-48) 0;
+}
+
+/* ── Text alignment utilities ────────────────────────────────*/
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+
+/* ── Italic utility ──────────────────────────────────────────*/
+.italic { font-style: italic; }

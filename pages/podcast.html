@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!-- pages/podcast.html (Podcast) -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Podcast: Uwe Jon Munyantwali</title>
+  <meta name="description" content="Football conversations that go deeper. Listen to the podcast.">
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    .page-hero {
+      background: var(--clr-lavender-bg);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--sp-64);
+      align-items: flex-end;
+    }
+    .hero-bg-letter {
+      position: absolute; right: var(--gutter); bottom: -20px;
+      font-family: var(--font-display); font-size: clamp(200px,22vw,320px);
+      font-weight: 900; color: rgba(158,125,154,.07);
+      line-height:1; pointer-events:none; user-select:none; letter-spacing:-.05em;
+    }
+    /* Album-art style podcast cover */
+    .podcast-cover {
+      width: 160px; height: 160px; border-radius: 20px;
+      background: linear-gradient(135deg, var(--clr-mauve), #7d5a8a);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 60px; flex-shrink: 0;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: var(--sp-16); /* aligns to bottom of hero */
+    }
+    /* Embedded player */
+    .player-card {
+      display: flex; align-items: center; gap: var(--sp-20);
+      padding: var(--sp-24); border-radius: var(--radius-lg);
+      background: var(--clr-warm-white); border: 1px solid var(--clr-line);
+      margin-bottom: var(--sp-64);
+    }
+    .play-btn {
+      width: 52px; height: 52px; border-radius: 50%; flex-shrink: 0;
+      background: var(--clr-mauve); display: flex; align-items: center;
+      justify-content: center; cursor: pointer; border: none;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .play-btn:hover { background: #7d5a8a; transform: scale(1.06); }
+    .player-bar {
+      height: 3px; background: var(--clr-line); border-radius: 2px;
+      margin-top: var(--sp-10); position: relative;
+    }
+    .player-progress {
+      height: 100%; width: 35%; background: var(--clr-mauve);
+      border-radius: 2px;
+    }
+    /* Callout note about placeholder content */
+    .placeholder-note {
+      font-size: 12px; color: var(--clr-muted); font-style: italic;
+      margin-top: var(--sp-12);
+    }
+    @media (max-width: 768px) {
+      .page-hero { grid-template-columns: 1fr; }
+      .podcast-cover { width: 120px; height: 120px; font-size: 44px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="site-nav">
+      <a href="../index.html" class="nav-logo">UJM</a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="profile.html">Profile &amp; Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="podcast.html" class="active">Podcast</a>
+        <a href="accolades.html">Accolades</a>
+        <a href="contact.html">Contact Me</a>
+      </div>
+      <div class="nav-icons">
+        <a href="mailto:uwejonmunyantwali@yahoo.com" class="nav-icon-btn">✉</a>
+        <a href="https://linkedin.com/in/uwejonmunyantwali" target="_blank" rel="noopener" class="nav-icon-btn">🔗</a>
+        <a href="https://open.spotify.com/show/5cVgMxQyh8gZMBLxaZQHXZ" class="nav-icon-btn">🎙</a>
+        <a href="https://futbolmundial.com" target="_blank" rel="noopener" class="nav-icon-btn">⚽</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Home</a><a href="profile.html">Profile &amp; Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="podcast.html">Podcast</a>
+      <a href="accolades.html">Accolades</a>
+      <a href="contact.html">Contact Me</a>
+    </div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- HERO -->
+    <section class="page-hero">
+      <span class="hero-bg-letter" aria-hidden="true">P</span>
+      <div>
+        <span class="eyebrow anim-fade-up stagger-1">Listen</span>
+        <h1 class="text-display anim-fade-up stagger-2">The Podcast</h1>
+        <p class="text-lead anim-fade-up stagger-3" style="margin-top:var(--sp-16);">
+          Football conversations that go deeper than the highlights: analysis,
+          guests, and the stories the game doesn't always tell.
+        </p>
+        <!-- Platform badges: update href with real URLs -->
+        <div class="flex gap-12 flex-wrap anim-fade-up stagger-4" style="margin-top:var(--sp-24);">
+          <a href="https://open.spotify.com/show/5cVgMxQyh8gZMBLxaZQHXZ" target="_blank" rel="noopener" class="platform-badge platform-spotify">▶ Spotify</a>
+          <a href="https://www.instagram.com/thebackofthenetcommunity"
+             target="_blank"
+             rel="noopener"
+             class="platform-badge platform-instagram"
+             aria-label="Follow @thebackofthenetcommunity on Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="flex-shrink:0;">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            @thebackofthenetcommunity
+          </a>
+        </div>
+        <p class="placeholder-note anim-fade-up stagger-5">
+          Follow on Instagram for episodes and community updates.
+        </p>
+      </div>
+      <!-- Album art -->
+      <div class="podcast-cover anim-fade-up stagger-2" aria-hidden="true">🎙</div>
+    </section>
+
+    <section class="section" aria-label="Podcast player and episodes">
+      <div class="container">
+        <iframe data-testid="embed-iframe" 
+                style="border-radius:12px" 
+                src="https://open.spotify.com/embed/show/5cVgMxQyh8gZMBLxaZQHXZ?utm_source=generator" 
+                width="100%" height="352" frameBorder="0" allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+        </iframe>
+    
+      <div class="player-card reveal">
+          <button class="play-btn" aria-label="Play episode">
+            <!-- SVG play triangle — inline so colour can be controlled -->
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <polygon points="4,2 16,9 4,16" fill="white"/>
+            </svg>
+          </button>
+          <div style="flex:1;">
+            <p style="font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--clr-charcoal);">
+              Episode 12 — Tactical Evolution of African Football
+            </p>
+            <p class="text-sm" style="margin-top:4px;">42 min · Released 14 Jan 2025</p>
+            <div class="player-bar"><div class="player-progress"></div></div>
+          </div>
+          <span class="text-mono" style="flex-shrink:0;">18:32 / 42:00</span>
+        </div>
+
+        <!-- EPISODE LIST -->
+        <div>
+          <span class="eyebrow">Episodes</span>
+          <h2 class="h2 reveal" style="margin-bottom:var(--sp-32);">Recent Episodes</h2>
+
+          <!-- Episode cards — add more as new episodes are released -->
+          <div class="episode-card reveal">
+            <div class="ep-num">EP 12</div>
+            <div>
+              <p class="ep-title">Tactical Evolution of African Football</p>
+              <p class="ep-desc">How African clubs and national teams are developing distinct tactical identities — and what the rest of the world is missing.</p>
+              <a href="#" class="ep-listen">▶ Listen now</a>
+            </div>
+          </div>
+
+          <div class="episode-card reveal delay-1">
+            <div class="ep-num">EP 11</div>
+            <div>
+              <p class="ep-title">Women's World Cup in Review</p>
+              <p class="ep-desc">A full breakdown of the 2023 Women's World Cup — the tactical stories, the standout players, and what it means for the women's game going forward.</p>
+              <a href="#" class="ep-listen">▶ Listen now</a>
+            </div>
+          </div>
+
+          <div class="episode-card reveal delay-2">
+            <div class="ep-num">EP 10</div>
+            <div>
+              <p class="ep-title">Inside the Press Box</p>
+              <p class="ep-desc">What covering a FIFA World Cup actually looks like — the logistics, the pressure, and the moments you never see on broadcast.</p>
+              <a href="#" class="ep-listen">▶ Listen now</a>
+            </div>
+          </div>
+
+          <div class="episode-card reveal delay-3">
+            <div class="ep-num">EP 09</div>
+            <div>
+              <p class="ep-title">The Business of Football in Africa</p>
+              <p class="ep-desc">Sponsorship, infrastructure, and what it takes to build a sustainable football ecosystem on the continent.</p>
+              <a href="#" class="ep-listen">▶ Listen now</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <a href="../index.html" class="footer-logo">UJM
+        </a>
+        <p class="footer-tagline">Football Analyst · Sports Journalist<br>Northwestern University
+        </p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <nav class="footer-nav"><a href="../index.html">Home</a>
+          <a href="profile.html">Profile &amp; Skills</a>
+          <a href="experience.html">Experience</a>
+          <a href="podcast.html">Podcast</a>
+          <a href="accolades.html">Accolades</a>
+          <a href="contact.html">Contact Me</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">Connect
+        </p>
+      <div class="footer-social">
+      <div class="footer-social-item">
+        <span class="footer-social-icon">✉
+        </span>
+        <a href="mailto:uwejonmunyantwali@yahoo.com">uwejonmunyantwali@yahoo.com</a>
+      </div>
+      <div class="footer-social-item">
+        <span class="footer-social-icon">📞
+        </span>
+        <a href="tel:+12678588531">267-858-8531</a>
+      </div>
+      <div class="footer-social-item">
+        <span class="footer-social-icon">🔗</span>
+        <a href="https://linkedin.com/in/uwejonmunyantwali" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+      <div class="footer-social-item">
+        <span class="footer-social-icon">🎙</span>
+        <a href="https://open.spotify.com/show/5cVgMxQyh8gZMBLxaZQHXZ">Podcast</a>
+      </div>
+      <div class="footer-social-item">
+        <span class="footer-social-icon">⚽</span>
+        <a href="https://futbolmundial.com" target="_blank" rel="noopener">Futbol Mundial</a>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer-bottom"><span>© 2026 Uwe Jon Munyantwali</span>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>

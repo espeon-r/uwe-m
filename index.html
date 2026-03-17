@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!--
+  index.html — Homepage
+  =====================================================================
+  The first page anyone sees. Contains:
+    • Full-viewport hero with Uwe's name, role, and key stats
+    • Photo tile grid — each tile is a clickable link to a page
+    • Shared navigation bar (nav.js handles scroll + mobile)
+    • Shared footer with all social/contact links
+
+  All stock images are sourced from Unsplash (free, no attribution
+  required). Replace src URLs with Uwe's real photos when available.
+  ===================================================================== -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Page title and SEO meta -->
+  <title>Uwe Jon Munyantwali — Football Analyst & Journalist</title>
+  <meta name="description" content="Football analyst, sports journalist, and podcast host. Covering the beautiful game across three continents.">
+
+  <!-- Open Graph tags for clean social media sharing -->
+  <meta property="og:title"       content="Uwe Jon Munyantwali">
+  <meta property="og:description" content="Football Analyst · Sports Journalist · Northwestern University">
+  <meta property="og:image"       content="images/og-image.jpg">
+  <meta property="og:type"        content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <!-- Google Fonts preconnect for faster font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!--
+    CSS load order matters:
+      1. variables.css  — design tokens (colours, spacing, etc.)
+      2. typography.css — fonts, text styles (imports Google Fonts)
+      3. layout.css     — grid, containers, page structure
+      4. components.css — nav, footer, buttons, tiles, cards
+      5. animations.css — keyframes and scroll-reveal transitions
+  -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- Page-specific hero background texture -->
+  <style>
+    /* ── Pitch line grid texture ──────────────────────────────
+       A very faint repeating grid overlaid on the hero
+       background. Evokes a football pitch without being heavy.
+    ────────────────────────────────────────────────────────── */
+    .home-hero {
+      background-color: var(--clr-warm-white);
+    }
+
+    .home-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .035;
+      background-image:
+        repeating-linear-gradient(0deg,   var(--clr-charcoal) 0, transparent 1px, transparent 64px),
+        repeating-linear-gradient(90deg,  var(--clr-charcoal) 0, transparent 1px, transparent 64px);
+    }
+
+    /* ── Radial glow behind the name ──────────────────────────
+       Soft sage green radial gradient in the upper-right corner
+       adds depth to the hero without competing with the text.
+    ────────────────────────────────────────────────────────── */
+    .hero-glow {
+      position: absolute;
+      top: -160px;
+      right: -120px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(125,169,138,.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ── Tile grid height overrides ───────────────────────────
+       Force each tile row to a fixed height so images fill
+       their cells consistently regardless of content.
+    ────────────────────────────────────────────────────────── */
+    .tile-grid {
+      grid-template-rows: 380px 300px;
+    }
+
+    /* ── Tiles section background ─────────────────────────────*/
+    .tiles-section {
+      background: var(--clr-warm-white);
+      padding: var(--sp-80) var(--gutter);
+    }
+
+    /* ── Section heading bar above tiles ──────────────────────*/
+    .tiles-intro {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: var(--sp-24);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAVIGATION BAR ───────────────────────────────────── -->
+  <!-- See shared-elements.html for full documentation -->
+  <header>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="index.html" class="nav-logo" aria-label="UJM — Home">UJM</a>
+
+      <div class="nav-links" role="menubar">
+        <!-- 'active' class is set here manually for the homepage -->
+        <a href="index.html"              class="active" role="menuitem">Home</a>
+        <a href="pages/profile.html"      role="menuitem">Profile &amp; Skills</a>
+        <a href="pages/experience.html"   role="menuitem">Experience</a>
+        <a href="pages/podcast.html"      role="menuitem">Podcast</a>
+        <a href="pages/accolades.html"    role="menuitem">Accolades</a>
+        <a href="pages/contact.html"      role="menuitem">Contact Me</a>
+      </div>
+
+      <div class="nav-icons" aria-label="Social links">
+        <a href="mailto:uwejonmunyantwali@yahoo.com" class="nav-icon-btn" title="Email Uwe" aria-label="Email">✉</a>
+        <a href="https://linkedin.com/in/uwejonmunyantwali" target="_blank" rel="noopener" class="nav-icon-btn" title="LinkedIn" aria-label="LinkedIn">🔗</a>
+        <a href="https://open.spotify.com/show/5cVgMxQyh8gZMBLxaZQHXZ" target="_blank" rel="noopener" class="nav-icon-btn" title="Podcast" aria-label="Podcast">🎙</a>
+        <a href="https://futbolmundial.com" target="_blank" rel="noopener" class="nav-icon-btn" title="Futbol Mundial" aria-label="Futbol Mundial">⚽</a>
+      </div>
+
+      <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+      <a href="index.html">Home</a>
+      <a href="pages/profile.html">Profile &amp; Skills</a>
+      <a href="pages/experience.html">Experience</a>
+      <a href="pages/podcast.html">Podcast</a>
+      <a href="pages/accolades.html">Accolades</a>
+      <a href="pages/contact.html">Contact Me</a>
+    </div>
+  </header>
+
+  <!-- ── MAIN PAGE CONTENT ────────────────────────────────── -->
+  <main class="page-wrapper">
+
+    <!-- ══════════════════════════════════════════════════════
+         HERO SECTION
+         Full-viewport opening. Uwe's name, role, lead text,
+         CTA buttons, and four stat numbers that count up
+         when they scroll into view (handled by animations.js).
+         ══════════════════════════════════════════════════════ -->
+    <section class="home-hero" aria-label="Hero">
+
+      <!-- Decorative radial glow (CSS-only, no content) -->
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div style="position:relative; z-index:1;">
+
+        <!-- Eyebrow label — staggered fade-up on page load -->
+        <span class="eyebrow anim-fade-up stagger-1">
+          Football Analyst · Journalist · Northwestern University
+        </span>
+
+        <!-- Large display name -->
+        <h1 class="text-display anim-fade-up stagger-2" style="margin-bottom: var(--sp-16);">
+          <!-- First name in charcoal, last name in sage green -->
+          <span style="color: var(--clr-charcoal);">Uwe Jon<br></span>
+          <span style="color: var(--clr-sage);">Munyantwali</span>
+        </h1>
+
+        <!-- Italic subtitle / role statement -->
+        <p class="anim-fade-up stagger-3"
+           style="font-family: var(--font-display); font-size: clamp(18px,2vw,22px);
+                  font-style: italic; color: var(--clr-muted); margin-bottom: var(--sp-24);">
+          Analysing the beautiful game from every angle.
+        </p>
+
+        <!-- Lead paragraph -->
+        <p class="text-lead anim-fade-up stagger-4" style="margin-bottom: var(--sp-32);">
+          Match analysis, tactical insight, and football storytelling —
+          across three continents, two World Cups, and one relentless
+          curiosity for the game.
+        </p>
+
+        <!-- CTA buttons -->
+        <div class="flex gap-12 flex-wrap anim-fade-up stagger-5" style="margin-bottom: var(--sp-64);">
+          <a href="pages/experience.html" class="btn btn-primary">View Experience</a>
+          <a href="pages/profile.html"    class="btn btn-outline">About Me</a>
+        </div>
+
+        <!-- ── Stats strip ───────────────────────────────────
+             data-target = the number to count to
+             data-suffix = text appended after the number
+             data-decimals = decimal places (1 for 3.3)
+             animations.js handles the count-up animation.
+        ────────────────────────────────────────────────────── -->
+        <div class="stats-strip anim-fade-up stagger-6">
+          <div class="stat-item">
+            <div class="stat-num" data-target="4" data-suffix="+">4+</div>
+            <div class="stat-label">Years at Futbol Mundial</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-target="2">2</div>
+            <div class="stat-label">FIFA World Cups covered</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-target="3">3</div>
+            <div class="stat-label">Continents</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num" data-target="3.3" data-decimals="1">3.3</div>
+            <div class="stat-label">GPA at Northwestern</div>
+          </div>
+        </div>
+
+      </div><!-- /position:relative -->
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════════════
+         TILE GRID SECTION
+         Six photo tiles — one per page. Each tile is a full
+         link element that navigates to the corresponding page.
+
+         Images: stock photos from Unsplash sourced via direct
+         URL. Replace with real photos once Uwe provides them.
+         Layout uses CSS Grid (defined in layout.css).
+         ══════════════════════════════════════════════════════ -->
+    <section class="tiles-section" aria-label="Explore sections">
+
+      <div class="tiles-intro">
+        <div>
+          <span class="eyebrow">Explore</span>
+          <h2 class="h2" style="margin-top: 0;">Everything in one place</h2>
+        </div>
+        <a href="pages/contact.html" class="btn btn-outline" style="flex-shrink:0;">
+          ✉ &nbsp;Get in touch
+        </a>
+      </div>
+
+      <!-- Tile grid — CSS grid layout defined in layout.css -->
+      <div class="tile-grid">
+
+        <!-- TILE 1: Profile & Skills (tall left column) -->
+        <a href="pages/profile.html"
+           class="tile tile--third tile--tall reveal delay-1"
+           aria-label="Navigate to Profile and Skills page">
+          <!--
+            Stock image: person studying/writing — evokes analytical work.
+            Source: Unsplash (free to use, no attribution needed).
+            Replace with Uwe's headshot when available.
+          -->
+          <img src="images/headshot.jpeg"
+               alt="Uwe Jon Munyantwali — profile photo"
+               loading="lazy">
+          <div class="tile-overlay" aria-hidden="true"></div>
+          <div class="tile-label">
+            <span class="tile-name">Profile &amp; Skills</span>
+            <span class="tile-desc">Background, bio &amp; expertise</span>
+          </div>
+          <div class="tile-arrow" aria-hidden="true">↗</div>
+        </a>
+
+        <!-- TILE 2: Experience (wide) -->
+        <a href="pages/experience.html"
+           class="tile tile--wide reveal delay-2"
+           aria-label="Navigate to Experience page">
+          <!--
+            Stock image: football stadium from the press area.
+            Evokes the professional match coverage environment.
+          -->
+          <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=1200&q=80&auto=format"
+               alt="Football stadium — experience section"
+               loading="lazy">
+          <div class="tile-overlay" aria-hidden="true"></div>
+          <div class="tile-label">
+            <span class="tile-name">Experience</span>
+            <span class="tile-desc">Career timeline &amp; published work</span>
+          </div>
+          <div class="tile-arrow" aria-hidden="true">↗</div>
+        </a>
+
+        <!-- TILE 3: Podcast (wide) -->
+        <a href="pages/podcast.html"
+           class="tile tile--wide reveal delay-3"
+           aria-label="Navigate to Podcast page">
+          <!--
+            Stock image: podcast microphone / recording setup.
+          -->
+          <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=1200&q=80&auto=format"
+               alt="Podcast microphone — podcast section"
+               loading="lazy">
+          <div class="tile-overlay" aria-hidden="true"></div>
+          <div class="tile-label">
+            <span class="tile-name">Podcast</span>
+            <span class="tile-desc">Listen to the show</span>
+          </div>
+          <div class="tile-arrow" aria-hidden="true">↗</div>
+        </a>
+
+        <!-- TILE 4: Accolades -->
+        <a href="pages/accolades.html"
+           class="tile tile--third reveal delay-4"
+           aria-label="Navigate to Accolades and Achievements page">
+          <!--
+            Stock image: award / trophy / graduation ceremony.
+          -->
+          <img src="https://images.unsplash.com/photo-1567427018141-0584cfcbf1b8?w=800&q=80&auto=format"
+               alt="Trophy — accolades and achievements"
+               loading="lazy">
+          <div class="tile-overlay" aria-hidden="true"></div>
+          <div class="tile-label">
+            <span class="tile-name">Accolades</span>
+            <span class="tile-desc">Recognitions &amp; achievements</span>
+          </div>
+          <div class="tile-arrow" aria-hidden="true">↗</div>
+        </a>
+
+        <!-- TILE 5: Contact Me -->
+        <a href="pages/contact.html"
+           class="tile tile--third reveal delay-5"
+           aria-label="Navigate to Contact page">
+          <!--
+            Stock image: hands typing / writing — communication theme.
+          -->
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80&auto=format"
+               alt="Communication — contact page"
+               loading="lazy">
+          <div class="tile-overlay" aria-hidden="true"></div>
+          <div class="tile-label">
+            <span class="tile-name">Contact Me</span>
+            <span class="tile-desc">Let's talk football</span>
+          </div>
+          <div class="tile-arrow" aria-hidden="true">↗</div>
+        </a>
+
+      </div><!-- /tile-grid -->
+
+    </section>
+
+  </main><!-- /page-wrapper -->
+
+
+  <!-- ── FOOTER ────────────────────────────────────────────── -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="footer-inner">
+      <div>
+        <a href="index.html" class="footer-logo" aria-label="UJM — Home">UJM</a>
+        <p class="footer-tagline">
+          Football Analyst · Sports Journalist<br>
+          Northwestern University<br>
+          Canada · Uganda · United Kingdom
+        </p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="pages/profile.html">Profile &amp; Skills</a>
+          <a href="pages/experience.html">Experience</a>
+          <a href="pages/podcast.html">Podcast</a>
+          <a href="pages/accolades.html">Accolades &amp; Achievements</a>
+          <a href="pages/contact.html">Contact Me</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">Connect</p>
+        <div class="footer-social">
+          <div class="footer-social-item">
+            <span class="footer-social-icon">✉</span>
+            <a href="mailto:uwejonmunyantwali@yahoo.com">uwejonmunyantwali@yahoo.com</a>
+          </div>
+          <div class="footer-social-item">
+            <span class="footer-social-icon">📞</span>
+            <a href="tel:+12678588531">267-858-8531</a>
+          </div>
+          <div class="footer-social-item">
+            <span class="footer-social-icon">🔗</span>
+            <a href="https://linkedin.com/in/uwejonmunyantwali" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <div class="footer-social-item">
+            <span class="footer-social-icon">🎙</span>
+            <a href="pages/podcast.html">Podcast — listen now</a>
+          </div>
+          <div class="footer-social-item">
+            <span class="footer-social-icon">⚽</span>
+            <a href="https://futbolmundial.com" target="_blank" rel="noopener">Futbol Mundial</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Uwe Jon Munyantwali</span>
+    </div>
+  </footer>
+
+
+  <!-- ── SCRIPTS ───────────────────────────────────────────── -->
+  <!--
+    Scripts are loaded at the bottom of <body> so that the
+    HTML is fully parsed before JavaScript runs. This avoids
+    "element not found" errors.
+
+    nav.js       — scroll shadow, mobile menu toggle
+    animations.js — scroll-reveal and stat counter
+  -->
+  <script src="js/nav.js"></script>
+  <script src="js/animations.js"></script>
+
+</body>
+</html>

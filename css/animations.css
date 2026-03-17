@@ -1,0 +1,170 @@
+/* =============================================================
+   animations.css
+   All CSS keyframe animations and transition effects used
+   across the site. Import last so it can override component
+   transitions if needed.
+
+   animations.js uses the IntersectionObserver API to add
+   the .visible class to .reveal elements — that class is
+   defined in components.css. The hero stagger animations
+   below are CSS-only (no JavaScript required).
+   ============================================================= */
+
+
+/* ── Page load stagger (hero section) ────────────────────────
+   On every page, the hero content fades and slides up on load.
+   Each child gets a progressive animation-delay via the
+   .stagger-N classes set on the HTML elements.
+────────────────────────────────────────────────────────── */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Class applied to elements that should animate in on page load */
+.anim-fade-up {
+  animation: fadeUp 700ms cubic-bezier(.25, .46, .45, .94) both;
+}
+
+/* Delay steps for staggered hero children */
+.stagger-1 { animation-delay: 60ms; }
+.stagger-2 { animation-delay: 140ms; }
+.stagger-3 { animation-delay: 220ms; }
+.stagger-4 { animation-delay: 300ms; }
+.stagger-5 { animation-delay: 380ms; }
+.stagger-6 { animation-delay: 460ms; }
+
+
+/* ── Fade in from left ───────────────────────────────────────
+   Used on left-column content in two-column layouts.
+────────────────────────────────────────────────────────── */
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.anim-fade-left {
+  animation: fadeLeft 700ms cubic-bezier(.25, .46, .45, .94) both;
+}
+
+
+/* ── Stat counter animation ──────────────────────────────────
+   The actual number counting is handled by countUp() in
+   animations.js. This class just ensures the element starts
+   hidden and becomes visible when the counter begins.
+────────────────────────────────────────────────────────── */
+
+.stat-num {
+  transition: opacity 300ms ease;
+}
+
+.stat-num.counting {
+  opacity: .7;   /* Slightly dim while counting */
+}
+
+
+/* ── Image tile hover (additional effects) ───────────────────
+   The core tile transforms are in components.css.
+   These are supplementary overlay animations.
+────────────────────────────────────────────────────────── */
+
+@keyframes shimmer {
+  from { background-position: -200% center; }
+  to   { background-position:  200% center; }
+}
+
+/* Shimmer effect on tile loading — removed once image loads */
+.tile-loading {
+  background: linear-gradient(
+    90deg,
+    var(--clr-sand-bg) 25%,
+    var(--clr-line) 50%,
+    var(--clr-sand-bg) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+
+/* ── Nav scroll shadow transition ────────────────────────────
+   The .scrolled class is toggled by nav.js when the page
+   scrolls past 20px. The transition is defined here.
+────────────────────────────────────────────────────────── */
+
+.site-nav {
+  transition: box-shadow 300ms ease, background 300ms ease;
+}
+
+
+/* ── Pulse glow (podcast play button) ───────────────────────
+   The podcast play button pulses gently to invite interaction.
+────────────────────────────────────────────────────────── */
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(158, 125, 154, .4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(158, 125, 154, 0);
+  }
+}
+
+.play-btn {
+  animation: pulse 2.4s ease infinite;
+}
+
+/* Stop pulsing when user is hovering (they've noticed it) */
+.play-btn:hover {
+  animation: none;
+}
+
+
+/* ── Tile reveal on scroll ───────────────────────────────────
+   Home page tiles also use the .reveal system but with a
+   slightly longer duration for the larger visual weight.
+────────────────────────────────────────────────────────── */
+
+.tile.reveal {
+  transition: opacity 800ms cubic-bezier(.25,.46,.45,.94),
+              transform 800ms cubic-bezier(.25,.46,.45,.94);
+}
+
+
+/* ── Respect prefers-reduced-motion ─────────────────────────
+   For users with vestibular or motion sensitivity, disable
+   all animations and transitions when they've set their OS
+   preference to reduce motion.
+────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .play-btn {
+    animation: none;
+  }
+}

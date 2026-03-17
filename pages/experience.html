@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<!-- pages/experience.html: Experience
+  Contains:
+    • Hero section
+    • Featured articles strip: interactive soccer ball links
+    • Career timeline: each role with org, title, dates, bullets -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experience: Uwe Jon Munyantwali</title>
+  <meta name="description" content="Career timeline: Futbol Mundial, FAZ, NBA Africa, and more.">
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    .page-hero { background: var(--clr-wheat-bg); }
+
+    .hero-bg-letter {
+      position: absolute; right: var(--gutter); bottom: -20px;
+      font-family: var(--font-display); font-size: clamp(200px,22vw,320px);
+      font-weight: 900; color: rgba(192,133,106,.07);
+      line-height: 1; pointer-events: none; user-select: none; letter-spacing: -.05em;
+    }
+
+    /* Featured articles strip background */
+    .articles-strip {
+      background: var(--clr-sand-bg);
+      border-bottom: 1px solid var(--clr-line);
+      padding: var(--sp-48) var(--gutter);
+    }
+
+    .highlight-role {
+      background: var(--clr-sky-bg);
+      border: 1px solid var(--clr-line);
+      border-left: 5px solid var(--clr-blue);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: var(--sp-32) var(--sp-32) var(--sp-32) var(--sp-28);
+      margin-bottom: var(--sp-48);
+    }
+
+    .highlight-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-8);
+      background: var(--clr-blue);
+      color: var(--clr-white);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--sp-16);
+    }
+
+    /* Additional minor roles grid */
+    .minor-roles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-16);
+      margin-top: var(--sp-24);
+    }
+
+    .minor-role-card {
+      padding: var(--sp-20);
+      border: 1px solid var(--clr-line);
+      border-radius: var(--radius-md);
+      background: var(--clr-warm-white);
+    }
+
+    @media (max-width: 768px) {
+      .minor-roles-grid { grid-template-columns: 1fr; }
+      .articles-strip { padding: var(--sp-40) var(--gutter-sm); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-logo">UJM</a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="profile.html">Profile &amp; Skills</a>
+        <a href="experience.html" class="active">Experience</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="accolades.html">Accolades</a>
+        <a href="contact.html">Contact Me</a>
+      </div>
+      <div class="nav-icons">
+        <a href="mailto:uwejonmunyantwali@yahoo.com" class="nav-icon-btn" title="Email">✉</a>
+        <a href="https://www.linkedin.com/messaging/thread/2-YTI2YjUxNjktMmZhMy00MDQwLThkMDUtYjMxMDZlZjViMDMzXzEwMA==/" target="_blank" rel="noopener" class="nav-icon-btn" title="LinkedIn">🔗</a>
+        <a href="" class="nav-icon-btn" title="Podcast">🎙</a>
+        <a href="https://www.futbolmundial.com/?s=uwe+munyantwali" target="_blank" rel="noopener" class="nav-icon-btn" title="Futbol Mundial">⚽</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Home</a>
+      <a href="profile.html">Profile &amp; Skills</a>
+      <a href="experience.html">Experience</a>
+      <a href="podcast.html">Podcast</a>
+      <a href="accolades.html">Accolades</a>
+      <a href="contact.html">Contact Me</a>
+    </div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- HERO -->
+    <section class="page-hero">
+      <span class="hero-bg-letter" aria-hidden="true">E</span>
+      <span class="eyebrow anim-fade-up stagger-1">Career</span>
+      <h1 class="text-display anim-fade-up stagger-2">Experience</h1>
+      <p class="text-lead anim-fade-up stagger-3" style="margin-top: var(--sp-16);">
+        Three continents. Two FIFA World Cups. A career built on football intelligence and media craft.
+      </p>
+    </section>
+
+
+    <!-- FEATURED ARTICLES STRIP
+         Each chip links to a published article. Clicking the soccer ball opens the article in a new tab. -->
+    <div class="articles-strip" aria-label="Featured published work">
+      <span class="eyebrow">Featured Work</span>
+      <h2 class="h3" style="margin-bottom: var(--sp-8);">Published Articles</h2>
+      <p class="text-sm" style="margin-bottom: var(--sp-20);">
+        Click a ⚽</p>
+
+      <div class="article-row">
+
+        <!-- Each .article-chip is an anchor tag. 
+          The .ball-icon span rotates 30° on hover for a fun interactive touch. -->
+
+        <a href="https://www.futbolmundial.com/2026/01/15/the-rise-of-the-beautiful-game-in-africa/" target="_blank" rel="noopener"
+           class="article-chip"
+           aria-label="Read: The biggest shocks during this football season on Futbol Mundial">
+          <span class="ball-icon" aria-hidden="true">⚽</span>
+          The rise of the beautiful game in Africa
+        </a>
+
+        <a href="https://www.futbolmundial.com/2025/12/02/with-real-madrids-recent-dip-in-form-is-it-time-to-start-hitting-the-panic-button/" target="_blank" rel="noopener"
+           class="article-chip"
+           aria-label="Read: Champions League, all its decided for knockout stages on Futbol Mundial">
+          <span class="ball-icon" aria-hidden="true">⚽</span>
+          Champions League, all its decided for knockout stages
+        </a>
+
+        <a href="https://www.futbolmundial.com/2025/09/09/summer-transfers-that-could-define-the-usmnts-world-cup-run/" target="_blank" rel="noopener"
+           class="article-chip"
+           aria-label="Read: Real Madrid edge out Atletico in eight goal thriller on Futbol Mundial">
+          <span class="ball-icon" aria-hidden="true">⚽</span>
+          Summer Transfers That Could Define the USMNT’s World Cup Run
+        </a>
+
+        <a href="https://www.futbolmundial.com/?s=uwe+jon" target="_blank" rel="noopener"
+           class="article-chip"
+           aria-label="View all articles on Futbol Mundial">
+          <span class="ball-icon" aria-hidden="true">⚽</span>
+          View all on Futbol Mundial ↗
+        </a>
+
+      </div>
+    </div>
+
+
+    <!-- CAREER TIMELINE
+         Vertical timeline with colour-coded dots per role.
+         Each role card includes: org label (mono), role title, date/location metadata, bullet points, and an article link where applicable. -->
+    <section class="section" aria-label="Career timeline">
+      <div class="container">
+
+        <h2 class="h2 reveal" style="margin-bottom: var(--sp-64);">Career Timeline</h2>
+
+        <div class="timeline">
+
+          <!-- Role 1: Futbol Mundial (current) -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot" style="background:var(--clr-sage); box-shadow:0 0 0 2px var(--clr-sage);"></div>
+            <span class="tl-org">Futbol Mundial · New York</span>
+            <h3 class="tl-role">Football Journalist &amp; Analyst</h3>
+            <p class="tl-meta">January 2023 – Present</p>
+            <ul class="tl-bullets">
+              <li>Full tournament coverage of the 2023 FIFA Women's World Cup in Australia and New Zealand</li>
+              <li>Match analysis, tactical breakdowns, and long-form feature content for global audiences</li>
+              <li>Player performance reports and post-match editorial production</li>
+              <li>Regular video and written analysis published to Futbol Mundial's international platforms</li>
+            </ul>
+            <a href="https://www.futbolmundial.com/?s=uwe+munyantwali" target="_blank" rel="noopener"
+               class="tl-article-link"
+               aria-label="Read published work on Futbol Mundial">
+              <span class="ball" aria-hidden="true">⚽</span>
+              Read published work on Futbol Mundial →
+            </a>
+          </div>
+
+
+          <!-- Role 2: FAZ Fellowship -->
+          <div class="timeline-item reveal delay-1">
+            <div class="timeline-dot" style="background:var(--clr-terra); box-shadow:0 0 0 2px var(--clr-terra);"></div>
+            <span class="tl-org">Football Association of Zambia · Lusaka, Zambia</span>
+            <h3 class="tl-role">Media &amp; Communications Fellow</h3>
+            <p class="tl-meta">July – August 2024</p>
+            <ul class="tl-bullets">
+              <li>Developed digital communications strategy for the national football association</li>
+              <li>Produced content and media materials for FAZ's official platforms and press operations</li>
+              <li>Worked closely with the communications team on fan engagement and media strategy</li>
+              <li>One of a select cohort chosen for the FAZ digital strategy fellowship programme</li>
+            </ul>
+          </div>
+
+
+          <!-- Role 3: NBA Africa -->
+          <div class="timeline-item reveal delay-2">
+            <div class="timeline-dot" style="background:var(--clr-blue); box-shadow:0 0 0 2px var(--clr-blue);"></div>
+            <span class="tl-org">NBA Africa · Johannesburg, South Africa</span>
+            <h3 class="tl-role">Digital Sports Operations Intern</h3>
+            <p class="tl-meta">Summer 2023</p>
+            <ul class="tl-bullets">
+              <li>Supported digital content operations across NBA Africa's pan-continental platforms</li>
+              <li>Contributed to audience growth and social media content strategy</li>
+              <li>Gained cross-sport insight into how professional sports leagues build brand presence in Africa</li>
+            </ul>
+          </div>
+
+
+          <!-- Role 4: Futbol Mundial Intern (2022 World Cup) -->
+          <div class="timeline-item reveal delay-3">
+            <div class="timeline-dot" style="background:var(--clr-mauve); box-shadow:0 0 0 2px var(--clr-mauve);"></div>
+            <span class="tl-org">Futbol Mundial · 2022 FIFA World Cup, Qatar</span>
+            <h3 class="tl-role">Intern Journalist</h3>
+            <p class="tl-meta">2022</p>
+            <ul class="tl-bullets">
+              <li>Editorial and analytical support throughout the 2022 FIFA World Cup in Qatar</li>
+              <li>Contributed to match reports, tournament coverage, and daily editorial production</li>
+              <li>First major FIFA tournament experience — foundation of the analyst role that followed</li>
+            </ul>
+          </div>
+
+        </div><!-- /timeline -->
+
+
+        <!-- ADDITIONAL ROLES HIGHLIGHTED
+             The Kamala Harris campaign is given extra visual weight with the blue highlight card and badge.
+             Other additional roles appear in a three-column grid. -->
+        <div class="reveal" style="margin-top: var(--sp-80);">
+          <h2 class="h2" style="margin-bottom: var(--sp-32);">Additional Experience</h2>
+
+          <!-- Kamala Harris Campaign HIGHLIGHTED -->
+          <!-- This role is given a full highlight card because of its public significance. 
+           The blue left border, accent badge, and additional description make it stand out from the standard grid cards below. -->
+          <div class="highlight-role">
+            <span class="highlight-badge">⭐ Notable Role</span>
+            <span class="tl-org" style="margin-bottom: var(--sp-8); display:block;">
+              Democratic National Committee / Kamala Harris Presidential Campaign
+            </span>
+            <h3 class="h3" style="margin-bottom: var(--sp-8); color: var(--clr-charcoal);">
+              Political Fellow &amp; Communications Contributor
+            </h3>
+            <p class="tl-meta" style="margin-bottom: var(--sp-16);">United States · 2024</p>
+            <p class="text-body">
+              Contributed to the Kamala Harris presidential campaign in the United States —
+              supporting grassroots communications, community outreach, and voter engagement
+              efforts. This experience deepened Uwe's understanding of large-scale public
+              communications, political messaging, and the mechanics of running a national campaign.
+              It sits alongside his sports work as evidence of a communicator who operates
+              effectively across high-stakes, high-visibility environments.
+            </p>
+            <!-- Campaign logo sourced from public domain -->
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Kamala_Harris_2024_presidential_campaign_logo.svg/320px-Kamala_Harris_2024_presidential_campaign_logo.svg.png"
+                 alt="Kamala Harris 2024 Presidential Campaign"
+                 style="height:40px; width:auto; object-fit:contain; margin-top: var(--sp-20); opacity:.8;"
+                 loading="lazy"
+                 onerror="this.style.display='none'">
+          </div>
+
+          <!-- Minor roles grid  -->
+          <div class="minor-roles-grid">
+
+            <!-- ILI-SACE -->
+            <div class="minor-role-card">
+              <span class="tl-org" style="display:block; margin-bottom:6px;">ILI-SACE</span>
+              <h4 class="h4" style="margin-bottom:4px;">Programme Participant</h4>
+              <p class="tl-meta">International Leadership Institute</p>
+              <p class="text-sm" style="margin-top: var(--sp-8); line-height:1.6;">
+                Selected participant in an international leadership development programme
+                focused on civic engagement and cross-cultural communication.
+              </p>
+            </div>
+
+            <!-- DNC Campaign -->
+            <div class="minor-role-card">
+              <span class="tl-org" style="display:block; margin-bottom:6px;">Democratic National Committee</span>
+              <h4 class="h4" style="margin-bottom:4px;">Politics Fellow</h4>
+              <p class="tl-meta">United States · 2024</p>
+              <p class="text-sm" style="margin-top: var(--sp-8); line-height:1.6;">
+                Grassroots outreach, community organising, and voter engagement
+                for national Democratic campaign operations.
+              </p>
+            </div>
+
+          </div><!-- minor-roles-grid -->
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <a href="../index.html" class="footer-logo">UJM</a>
+        <p class="footer-tagline">Football Analyst · Sports Journalist<br>Northwestern University<br>Canada · Uganda · United Kingdom</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <nav class="footer-nav">
+          <a href="../index.html">Home</a>
+          <a href="profile.html">Profile &amp; Skills</a>
+          <a href="experience.html">Experience</a>
+          <a href="podcast.html">Podcast</a>
+          <a href="accolades.html">Accolades &amp; Achievements</a>
+          <a href="contact.html">Contact Me</a>
+        </nav>
+      </div>
+      <div>
+        <p class="footer-col-title">Connect</p>
+        <div class="footer-social">
+          <div class="footer-social-item"><span class="footer-social-icon">✉</span><a href="mailto:uwejonmunyantwali@yahoo.com">uwejonmunyantwali@yahoo.com</a></div>
+          <div class="footer-social-item"><span class="footer-social-icon">📞</span><a href="tel:+12678588531">267-858-8531</a></div>
+          <div class="footer-social-item"><span class="footer-social-icon">🔗</span><a href="https://linkedin.com/in/uwejonmunyantwali" target="_blank" rel="noopener">LinkedIn</a></div>
+          <div class="footer-social-item"><span class="footer-social-icon">🎙</span><a href="podcast.html">Podcast</a></div>
+          <div class="footer-social-item"><span class="footer-social-icon">⚽</span><a href="https://www.futbolmundial.com/?s=uwe+munyantwali" target="_blank" rel="noopener">Futbol Mundial</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Uwe Jon Munyantwali</span>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>

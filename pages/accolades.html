@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!--
+  pages/accolades.html — Accolades & Achievements
+  ===================================================================== -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accolades &amp; Achievements — Uwe Jon Munyantwali</title>
+  <meta name="description" content="Recognitions, scholarships, leadership roles, and tournament coverage milestones.">
+  <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/typography.css">
+  <link rel="stylesheet" href="../css/layout.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    .page-hero { background: var(--clr-blush-bg); }
+    .hero-bg-letter {
+      position:absolute; right:var(--gutter); bottom:-20px;
+      font-family:var(--font-display); font-size:clamp(200px,22vw,320px);
+      font-weight:900; color:rgba(192,133,106,.07);
+      line-height:1; pointer-events:none; user-select:none;
+    }
+    /* Accolades grid — two columns */
+    .accolades-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--sp-20);
+    }
+    /* School logos displayed on each card */
+    .card-logo {
+      height: 36px; width: auto; object-fit: contain;
+      margin-bottom: var(--sp-16); display: block;
+      border-radius: var(--radius-sm);
+    }
+    @media (max-width: 768px) {
+      .accolades-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="site-nav">
+      <a href="../index.html" class="nav-logo">UJM</a>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="profile.html">Profile &amp; Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="podcast.html">Podcast</a>
+        <a href="accolades.html" class="active">Accolades</a>
+        <a href="contact.html">Contact Me</a>
+      </div>
+      <div class="nav-icons">
+        <a href="mailto:uwejonmunyantwali@yahoo.com" class="nav-icon-btn">✉</a>
+        <a href="https://www.linkedin.com/messaging/thread/2-YTI2YjUxNjktMmZhMy00MDQwLThkMDUtYjMxMDZlZjViMDMzXzEwMA==/" target="_blank" rel="noopener" class="nav-icon-btn">🔗</a>
+        <a href="podcast.html" class="nav-icon-btn">🎙</a>
+        <a href="https://futbolmundial.com" target="_blank" rel="noopener" class="nav-icon-btn">⚽</a>
+      </div>
+      <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="../index.html">Home</a><a href="profile.html">Profile &amp; Skills</a>
+      <a href="experience.html">Experience</a><a href="podcast.html">Podcast</a>
+      <a href="accolades.html">Accolades</a><a href="contact.html">Contact Me</a>
+    </div>
+  </header>
+
+  <main class="page-wrapper">
+
+    <!-- HERO -->
+    <section class="page-hero">
+      <span class="hero-bg-letter" aria-hidden="true">A</span>
+      <span class="eyebrow anim-fade-up stagger-1">Recognition</span>
+      <h1 class="text-display anim-fade-up stagger-2">Accolades &amp;<br>Achievements</h1>
+      <p class="text-lead anim-fade-up stagger-3" style="margin-top:var(--sp-16);">
+        The recognitions, leadership roles, and milestones that have marked the journey.
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="accolades-grid">
+
+          <!-- ── Academic scholarship ──────────────────────── -->
+          <div class="accolade-card reveal" style="border-top:3px solid var(--clr-sage);">
+            <!--
+              Logo: Lynn University seal sourced from Wikimedia Commons.
+              Replace with higher-res version or official file if available.
+            -->
+            <img class="card-logo"
+                 src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Lynn_University_seal.svg/200px-Lynn_University_seal.svg.png"
+                 alt="Lynn University"
+                 loading="lazy"
+                 onerror="this.style.display='none'">
+            <span class="acc-icon" aria-hidden="true">🎓</span>
+            <h3 class="acc-title">Academic Scholarship Recipient</h3>
+            <p class="acc-org">Lynn University · Boca Raton, FL</p>
+            <span class="acc-year">2021 – 2025</span>
+            <p class="acc-desc">
+              Awarded a full academic scholarship recognising outstanding academic performance
+              and personal merit. Maintained a 3.0 GPA while balancing professional journalism work.
+            </p>
+          </div>
+
+          <!-- ── 2023 Women's World Cup ─────────────────────── -->
+          <div class="accolade-card reveal delay-1" style="border-top:3px solid var(--clr-blue);">
+            <span class="acc-icon" aria-hidden="true">⚽</span>
+            <h3 class="acc-title">2023 FIFA Women's World Cup</h3>
+            <p class="acc-org">Futbol Mundial · Australia &amp; New Zealand</p>
+            <span class="acc-year">July – August 2023</span>
+            <p class="acc-desc">
+              Full tournament coverage as lead analyst and journalist — one of the largest
+              FIFA events in history. Produced match analysis, player profiles, and tactical
+              breakdowns across the entire tournament.
+            </p>
+          </div>
+
+          <!-- ── 2022 World Cup ─────────────────────────────── -->
+          <div class="accolade-card reveal delay-2" style="border-top:3px solid var(--clr-terra);">
+            <span class="acc-icon" aria-hidden="true">🌍</span>
+            <h3 class="acc-title">2022 FIFA World Cup Coverage</h3>
+            <p class="acc-org">Futbol Mundial · Qatar</p>
+            <span class="acc-year">November – December 2022</span>
+            <p class="acc-desc">
+              Editorial and analytical support throughout the most watched World Cup in
+              tournament history. First major FIFA assignment — the experience that launched
+              the analyst career that followed.
+            </p>
+          </div>
+
+          <!-- ── Lynn Leadership Institute ──────────────────── -->
+          <div class="accolade-card reveal delay-3" style="border-top:3px solid var(--clr-mauve);">
+            <img class="card-logo"
+                 src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8c/Lynn_University_seal.svg/200px-Lynn_University_seal.svg.png"
+                 alt="Lynn University"
+                 loading="lazy"
+                 onerror="this.style.display='none'">
+            <span class="acc-icon" aria-hidden="true">👑</span>
+            <h3 class="acc-title">Lynn Leadership Institute</h3>
+            <p class="acc-org">Lynn University</p>
+            <span class="acc-year">2021 – 2025</span>
+            <p class="acc-desc">
+              Selected member of the Lynn Leadership Institute — a competitive programme
+              developing skills in strategy, communication, and civic engagement.
+            </p>
+          </div>
+
+          <!-- ── Northwestern (current) ─────────────────────── -->
+          <div class="accolade-card reveal delay-1" style="border-top:3px solid var(--clr-sage);">
+            <img class="card-logo"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Northwestern_Wildcats_Logo.svg/200px-Northwestern_Wildcats_Logo.svg.png"
+                 alt="Northwestern University"
+                 loading="lazy"
+                 onerror="this.style.display='none'">
+            <span class="acc-icon" aria-hidden="true">🎓</span>
+            <h3 class="acc-title">M.A. Sports Administration — 3.3 GPA</h3>
+            <p class="acc-org">Northwestern University · Evanston, IL</p>
+            <span class="acc-year">2025 – 2027 (in progress)</span>
+            <p class="acc-desc">
+              Graduate studies in Sports Administration at one of the world's top research
+              universities — building the strategic and administrative framework to complement
+              field experience in football analysis and media.
+            </p>
+          </div>
+
+          <!-- ── Kamala Harris Campaign (also featured in accolades) -->
+          <div class="accolade-card reveal delay-4" style="border-top:3px solid var(--clr-blue);">
+            <img class="card-logo"
+                 src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Kamala_Harris_2024_presidential_campaign_logo.svg/320px-Kamala_Harris_2024_presidential_campaign_logo.svg.png"
+                 alt="Kamala Harris 2024 Campaign"
+                 loading="lazy"
+                 onerror="this.style.display='none'">
+            <span class="acc-icon" aria-hidden="true">🇺🇸</span>
+            <h3 class="acc-title">Kamala Harris Presidential Campaign: Political Fellow</h3>
+            <p class="acc-org">Democratic National Committee · United States</p>
+            <span class="acc-year">2024</span>
+            <p class="acc-desc">
+              Contributed to a historic national presidential campaign; supporting grassroots
+              communications, community outreach, and voter engagement. An experience that
+              demonstrated the transferability of editorial and communications skills across
+              high-stakes public environments.
+            </p>
+          </div>
+
+        </div><!-- /accolades-grid -->
+
+        <!-- Pull quote -->
+        <div class="quote-block reveal" style="margin-top: var(--sp-80); border-left-color: var(--clr-terra); background: var(--clr-blush-bg);">
+          <p class="pull-quote">
+            "Football is more than a passion, it's who I am."
+          </p>
+          <p class="quote-attr">— Uwe Jon Munyantwali</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div><a href="../index.html" class="footer-logo">UJM</a><p class="footer-tagline">Football Analyst · Sports Journalist<br>Northwestern University</p></div>
+      <div><p class="footer-col-title">Navigate</p><nav class="footer-nav"><a href="../index.html">Home</a><a href="profile.html">Profile &amp; Skills</a><a href="experience.html">Experience</a><a href="podcast.html">Podcast</a><a href="accolades.html">Accolades</a><a href="contact.html">Contact Me</a></nav></div>
+      <div><p class="footer-col-title">Connect</p><div class="footer-social"><div class="footer-social-item"><span class="footer-social-icon">✉</span><a href="mailto:uwejonmunyantwali@yahoo.com">uwejonmunyantwali@yahoo.com</a></div><div class="footer-social-item"><span class="footer-social-icon">📞</span><a href="tel:+12678588531">267-858-8531</a></div><div class="footer-social-item"><span class="footer-social-icon">🔗</span><a href="https://www.linkedin.com/messaging/thread/2-YTI2YjUxNjktMmZhMy00MDQwLThkMDUtYjMxMDZlZjViMDMzXzEwMA==/" target="_blank" rel="noopener">LinkedIn</a></div><div class="footer-social-item"><span class="footer-social-icon">🎙</span><a href="podcast.html">Podcast</a></div><div class="footer-social-item"><span class="footer-social-icon">⚽</span><a href="https://futbolmundial.com" target="_blank" rel="noopener">Futbol Mundial</a></div></div></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Uwe Jon Munyantwali</span>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>
